@@ -38,6 +38,7 @@ namespace YourFairShareWebApp.Pages
                 _db.AddRange(roommate);
                 _db.SaveChanges();
             }
+
         }
     }
 }
