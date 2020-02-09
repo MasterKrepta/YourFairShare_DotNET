@@ -18,5 +18,6 @@ namespace YFS_DataAccess.Models
         [MaxLength(10)]
         public string Amount { get; set; }
         public string DueDate { get; set; }
+
     }
 }

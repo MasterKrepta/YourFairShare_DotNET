@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YFS_DataAccess.DataAcess;
 
 namespace YFS_DataAccess.Migrations
 {
     [DbContext(typeof(RoommateContext))]
-    partial class RoommateContextModelSnapshot : ModelSnapshot
+    [Migration("20200209183808_ChangeBillToUseString")]
+    partial class ChangeBillToUseString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
