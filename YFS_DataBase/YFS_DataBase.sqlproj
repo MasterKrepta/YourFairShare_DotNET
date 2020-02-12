@@ -60,6 +60,7 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="PublishLocation" />
     <Folder Include="dbo\StoredProcedures" />
+    <Folder Include="dbo\Views" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\YFS_DataBase.publish.xml" />
@@ -70,8 +71,12 @@
     <Build Include="dbo\Tables\Roommates.sql" />
     <Build Include="dbo\StoredProcedures\sp_GetAllRoommates.sql" />
     <Build Include="dbo\StoredProcedures\spSaveSampleData.sql" />
+    <Build Include="dbo\StoredProcedures\sp_AddRoommate.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="YFS_DataBase.refactorlog" />
   </ItemGroup>
 </Project>

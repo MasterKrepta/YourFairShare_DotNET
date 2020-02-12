@@ -7,14 +7,17 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 
+
 namespace DataLibrary.DataAccess
 {
     public static class SqlDataAccess
     {
         public static string GetCnnString(string connName = "YourFairShareDB")
         {
+            
+            string result = ConfigurationManager.ConnectionStrings[connName].ConnectionString;
+            return result;
             //return ConfigurationManager.ConnectionStrings[connName].ConnectionString;
-            return ConfigurationManager.ConnectionStrings[connName].ConnectionString;
         }
 
         public static List<T> LoadData<T>(string sql)
