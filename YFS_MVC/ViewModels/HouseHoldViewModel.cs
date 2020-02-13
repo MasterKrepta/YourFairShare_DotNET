@@ -6,8 +6,10 @@ using YFS_MVC.Models;
 
 namespace YFS_MVC.ViewModels
 {
-    public class BillViewModel
+    public class HouseHoldViewModel
     {
+        
+        public List<RoommateModel> Roommates { get; set; }
         public List<BillModel> Bills { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace DataLibrary.BusinessLogic
             
             //string sql = @"insert into dbo.Bills (Name, Amount, DueDate)
             //                Values(@Name, @Amount, @DueDate);";
-            string sql = $"sql_AddNewBill '{data.Name}', '{data.Amount}', '{data.DueDate}'";
+            string sql = $"sp_AddNewBill '{data.Name}', '{data.Amount}', '{data.DueDate}'";
             return SqlDataAccess.SaveData(sql, data);
         }
 

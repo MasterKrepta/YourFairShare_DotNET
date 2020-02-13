@@ -8,7 +8,6 @@ namespace YFS_MVC.Models
 {
     public class BillModel
     {
-        public int BillId { get; set; }
         
         [Required]
         public string Name { get; set; }
