@@ -1,6 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[sp_AddRoommate]
-	@param1 int = 0,
-	@param2 int
+	@FirstName nvarchar(50),
+	@LastName nvarchar(50)
 AS
-	SELECT @param1, @param2
-RETURN 0
+begin
+Insert into dbo.Roommates 
+						values(@FirstName, @LastName)
+end

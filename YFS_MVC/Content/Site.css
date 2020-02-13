@@ -22,3 +22,10 @@ select,
 textarea {
     max-width: 280px;
 }
+
+td {
+    min-width: 200px;
+}
+tr:nth-child(even) {
+    background-color: lightgray;
+}

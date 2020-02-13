@@ -17,7 +17,6 @@ namespace DataLibrary.DataAccess
             
             string result = ConfigurationManager.ConnectionStrings[connName].ConnectionString;
             return result;
-            //return ConfigurationManager.ConnectionStrings[connName].ConnectionString;
         }
 
         public static List<T> LoadData<T>(string sql)
@@ -35,5 +34,7 @@ namespace DataLibrary.DataAccess
                 return cnn.Execute(sql, data);
             }
         }
+
+     
     }
 }

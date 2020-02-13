@@ -10,22 +10,27 @@ namespace DataLibrary.BusinessLogic
     {
         public static int CreateRoommate(string firstName, string lastName)
         {
-            RoomateModel data = new RoomateModel
+            RoommateModel data = new RoommateModel
             {
                 FirstName = firstName,
                 LastName = lastName
             };
-            string sql = @"insert into dbo.Roommates (FirstName, LastName)
-                            Values(@FirstName, @LastName);";
-            return SqlDataAccess.SaveData(sql, data);
+            //string sql = @"insert into dbo.Roommates (FirstName, LastName)
+            //                Values(@FirstName, @LastName);";
+
+            
+            string sql = $"sp_AddRoommate '{data.FirstName}','{data.LastName}'";
+
+            return SqlDataAccess.SaveData<RoommateModel>(sql, data);
         }
 
-        public static List<RoomateModel> LoadRoommates()
+        public static List<RoommateModel> LoadRoommates()
         {
-            string sql = @"select RoommateId, FirstName, LastName
-                          from dbo.Roommates;";
+            //string sql = @"select RoommateId, FirstName, LastName
+            //              from dbo.Roommates;";
 
-            return SqlDataAccess.LoadData<RoomateModel>(sql);
+            string sql = "sp_GetAllRoommates";
+            return SqlDataAccess.LoadData<RoommateModel>(sql);
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataLibrary.Models
 {
-    public class RoomateModel
+    public class RoommateModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
