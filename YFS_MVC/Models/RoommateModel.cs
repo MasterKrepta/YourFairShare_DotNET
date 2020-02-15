@@ -10,7 +10,7 @@ namespace YFS_MVC.Models
     {
         //[Display(Name ="Roommate ID")]
         //[Range(100000, 999999, ErrorMessage ="You must Enter a valid Id")]
-        //public int RoommateId { get; set; }
+        public int RoommateId { get; set; }
         
         [Required(ErrorMessage ="Enter your first name")]
         [Display(Name = "First Name")]

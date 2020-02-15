@@ -51,6 +51,7 @@ namespace YFS_MVC.Controllers
                                 model.FirstName, 
                                 model.LastName,
                                 model.MonthlyPayment);
+                UpdatePayments(); //TODO dont hard code this 
                 return RedirectToAction("Index");
             }
 
@@ -69,6 +70,7 @@ namespace YFS_MVC.Controllers
             {
                 roommates.Add(new RoommateModel
                 {
+                    RoommateId = item.RoommateId,
                     FirstName = item.FirstName,
                     LastName = item.LastName, 
                     MonthlyPayment = item.MonthlyPayment
@@ -85,5 +87,36 @@ namespace YFS_MVC.Controllers
             return View(roommates);
         }
 
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var data = GetRoommateById(id);
+            RoommateModel model = new RoommateModel
+            {
+                RoommateId = data.RoommateId,
+                FirstName = data.FirstName,
+                LastName = data.LastName,
+                MonthlyPayment = data.MonthlyPayment
+
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        
+        public ActionResult Delete(RoommateModel model)
+        {
+            //todo why is this not working like the bill delete does?
+
+            //if (ModelState.IsValid)
+            //{
+                //Todo should be mapping this to datalibrary model
+                DeleteRoommate(model.RoommateId);
+                UpdatePayments();
+                return RedirectToAction("ViewHousehold");
+            //}
+            return View();
+        }
     }
 }

@@ -61,27 +61,33 @@
     <Folder Include="PublishLocation" />
     <Folder Include="dbo\StoredProcedures" />
     <Folder Include="dbo\Views" />
+    <Folder Include="dbo\StoredProcedures\Bills" />
+    <Folder Include="dbo\StoredProcedures\Roommates" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\YFS_DataBase.publish.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\StoredProcedures\sp_GetAllBills.sql" />
     <Build Include="dbo\Tables\Bills.sql" />
     <Build Include="dbo\Tables\Roommates.sql" />
-    <Build Include="dbo\StoredProcedures\sp_GetAllRoommates.sql" />
     <Build Include="dbo\StoredProcedures\spSaveSampleData.sql" />
-    <Build Include="dbo\StoredProcedures\sp_AddRoommate.sql" />
-    <Build Include="dbo\StoredProcedures\sp_AddNewBill.sql" />
-    <Build Include="dbo\StoredProcedures\sp_CalculatePayment.sql" />
-    <Build Include="dbo\StoredProcedures\sp_UpdatePayment.sql" />
-    <Build Include="dbo\StoredProcedures\sp_RemoveBill.sql" />
-    <Build Include="dbo\StoredProcedures\sp_GetBillByName.sql" />
+    <Build Include="dbo\StoredProcedures\Bills\sp_AddNewBill.sql" />
+    <Build Include="dbo\StoredProcedures\Bills\sp_GetAllBills.sql" />
+    <Build Include="dbo\StoredProcedures\Roommates\sp_AddRoommate.sql" />
+    <Build Include="dbo\StoredProcedures\Roommates\sp_CalculatePayment.sql" />
+    <Build Include="dbo\StoredProcedures\Roommates\sp_GetAllRoommates.sql" />
+    <Build Include="dbo\StoredProcedures\Roommates\sp_GetRoommateById.sql" />
+    <Build Include="dbo\StoredProcedures\Roommates\sp_RemoveRoommate.sql" />
+    <Build Include="dbo\StoredProcedures\Roommates\sp_UpdatePayment.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="YFS_DataBase.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\StoredProcedures\Bills\sp_GetBillByName.sql" />
+    <Build Include="dbo\StoredProcedures\Bills\sp_RemoveBill.sql" />
   </ItemGroup>
 </Project>

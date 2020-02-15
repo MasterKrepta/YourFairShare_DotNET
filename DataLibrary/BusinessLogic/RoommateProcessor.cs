@@ -25,7 +25,26 @@ namespace DataLibrary.BusinessLogic
             return SqlDataAccess.SaveData<RoommateModel>(sql, data);
         }
 
-        private static float CalculatePayment()
+        public static RoommateModel GetRoommateById(int roommateId)
+        {
+            string sql = $"sp_GetRoommateById '{roommateId}'";
+            var data = SqlDataAccess.LoadData<RoommateModel>(sql);
+            RoommateModel result = new RoommateModel();
+            foreach (var item in data)
+            {
+                result = new RoommateModel
+                {
+                    RoommateId = item.RoommateId,
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    MonthlyPayment = item.MonthlyPayment
+                    
+                };
+            }
+            return result;
+
+        }
+        public static float CalculatePayment()
         {
             string sql = "sp_CalculatePayment";
             var data = SqlDataAccess.LoadData<float>(sql);
@@ -50,6 +69,18 @@ namespace DataLibrary.BusinessLogic
 
             string sql = "sp_GetAllRoommates";
             return SqlDataAccess.LoadData<RoommateModel>(sql);
+        }
+
+        public static void DeleteRoommate(int id)
+        {
+            RoommateModel roommate = new RoommateModel
+            {
+                RoommateId = id,
+           
+            };
+
+            var sql = $"sp_RemoveRoommate '{id}'";
+            SqlDataAccess.SaveData<RoommateModel>(sql, roommate);
         }
     }
 }

@@ -36,14 +36,16 @@ namespace DataLibrary.BusinessLogic
             return SqlDataAccess.LoadData<BillModel>(sql);
         }
 
-        public static void UpdatePayments(decimal newBill)
+        public static void UpdatePayments(decimal newBill = 0)
         {
             var data = LoadBills();
+            var numRoommates = RoommateProcessor.LoadRoommates().Count;
             decimal newPayments = newBill;
             foreach (var item in data)
             {
                 newPayments += item.Amount;
             }
+            newPayments /= numRoommates;
             string sql = $"sp_UpdatePayment '{newPayments}'";
             SqlDataAccess.SaveData(sql, newPayments);
         }
