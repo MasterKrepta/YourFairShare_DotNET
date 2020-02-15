@@ -3,18 +3,23 @@
 @{
     ViewBag.Title = "ViewHousehold";
 }
+    <div class="container row" >
+            <div class="col-md-9">
+                <h2 class="text-info">View Roommates</h2>
+            </div>
+        
+            <div class="col-md-3 ">
+                @Html.ActionLink("Add Roommate", "Join", null, new { @class = "btn btn-info" })
+        
+            </div>
+        
+    </div>
+    
 
-<h2>View Roommates</h2>
 
-<p>
-    @Html.ActionLink("Add Roommate", "Join")
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RoommateId)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
@@ -31,9 +36,7 @@
         @foreach (var item in Model)
         {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoommateId)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -44,8 +47,8 @@
                 @Html.DisplayFor(modelItem => item.MonthlyPayment)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.RoommateId })
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.RoommateId }, new {@class = "btn btn-danger" })
             </td>
         </tr>
         }

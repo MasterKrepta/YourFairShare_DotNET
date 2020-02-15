@@ -4,11 +4,16 @@
     ViewBag.Title = "ViewBills";
 }
 
-<h2>ViewBills</h2>
+<div class="container row">
+    <div class="col-md-9">
+        <h2 class="text-info">View Bills</h2>
+    </div>
 
-<p>
-    @Html.ActionLink("Create", "AddBill")
-</p>
+    <div class="col-md-3 ">
+        @Html.ActionLink("Create", "AddBill", null, new { @class = "btn btn-info" })
+    </div>
+
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -37,11 +42,10 @@
                     @Html.DisplayFor(modelItem => item.DueDate)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new {name = item.Name })
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Delete", "Delete", new { name = item.Name }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }
-        </tbody>
+    </tbody>
 </table>

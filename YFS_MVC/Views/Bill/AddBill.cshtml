@@ -1,10 +1,10 @@
 ﻿@model YFS_MVC.Models.BillModel
 
 @{
-    ViewBag.Title = "CreateBill";
+    ViewBag.Title = "Create a New Bill";
 }
 
-<h2>CreateBill</h2>
+<h2>Create a New Bill</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>BillModel</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -42,14 +42,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "ViewBills")
+    @Html.ActionLink("Back to All Bills", "ViewBills")
 </div>
 
 @section Scripts {
