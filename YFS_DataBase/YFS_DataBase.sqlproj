@@ -73,6 +73,10 @@
     <Build Include="dbo\StoredProcedures\spSaveSampleData.sql" />
     <Build Include="dbo\StoredProcedures\sp_AddRoommate.sql" />
     <Build Include="dbo\StoredProcedures\sp_AddNewBill.sql" />
+    <Build Include="dbo\StoredProcedures\sp_CalculatePayment.sql" />
+    <Build Include="dbo\StoredProcedures\sp_UpdatePayment.sql" />
+    <Build Include="dbo\StoredProcedures\sp_RemoveBill.sql" />
+    <Build Include="dbo\StoredProcedures\sp_GetBillByName.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />

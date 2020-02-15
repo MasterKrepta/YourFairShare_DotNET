@@ -53,5 +53,33 @@ namespace YFS_MVC.Controllers
 
             return View();
         }
+        
+        [HttpGet]
+        public ActionResult Delete(string name)
+        {
+            var data = GetBill(name);
+            BillModel model = new BillModel
+            {
+                Name = data[0].Name,
+                Amount = data[0].Amount,
+                DueDate = data[0].DueDate
+
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(BillModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                DeleteBill(model.Name, model.Amount, model.DueDate);
+                UpdatePayments(model.Amount);
+                return RedirectToAction("ViewBills");
+            }
+            return View();
+        }
+
     }
 }

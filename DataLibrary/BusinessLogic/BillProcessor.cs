@@ -22,6 +22,7 @@ namespace DataLibrary.BusinessLogic
             //string sql = @"insert into dbo.Bills (Name, Amount, DueDate)
             //                Values(@Name, @Amount, @DueDate);";
             string sql = $"sp_AddNewBill '{data.Name}', '{data.Amount}', '{data.DueDate}'";
+            UpdatePayments(data.Amount);
             return SqlDataAccess.SaveData(sql, data);
         }
 
@@ -31,7 +32,39 @@ namespace DataLibrary.BusinessLogic
             //              from dbo.Bills;";
 
             string sql = "sp_GetAllBills";
+            
             return SqlDataAccess.LoadData<BillModel>(sql);
+        }
+
+        public static void UpdatePayments(decimal newBill)
+        {
+            var data = LoadBills();
+            decimal newPayments = newBill;
+            foreach (var item in data)
+            {
+                newPayments += item.Amount;
+            }
+            string sql = $"sp_UpdatePayment '{newPayments}'";
+            SqlDataAccess.SaveData(sql, newPayments);
+        }
+
+
+        public static List<BillModel> GetBill(string name)
+        {
+            string sql = $"sp_GetBillByName '{name}'";
+            
+            return SqlDataAccess.LoadData<BillModel>(sql); 
+        }
+        public static void DeleteBill(string billName, decimal amount, DateTime duedate)
+        {
+            BillModel bill = new BillModel{
+                Name = billName,
+                Amount = amount,
+                DueDate = duedate
+            };
+
+            var sql = $"sp_RemoveBill '{bill.Name}'";
+            SqlDataAccess.SaveData<BillModel>(sql, bill);
         }
     }
 }

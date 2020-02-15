@@ -17,5 +17,6 @@ namespace YFS_MVC.Models
 
         [Required]
         public DateTime DueDate { get; set; }
+
     }
 }

@@ -2,5 +2,5 @@
 	
 AS
 begin
-	SELECT [FirstName], [LastName]from dbo.Roommates
+	SELECT [FirstName], [LastName], [MonthlyPayment]from dbo.Roommates
 end

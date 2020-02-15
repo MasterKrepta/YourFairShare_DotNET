@@ -49,7 +49,8 @@ namespace YFS_MVC.Controllers
             {
                 int recordsCreated = CreateRoommate(
                                 model.FirstName, 
-                                model.LastName);
+                                model.LastName,
+                                model.MonthlyPayment);
                 return RedirectToAction("Index");
             }
 
@@ -69,7 +70,8 @@ namespace YFS_MVC.Controllers
                 roommates.Add(new RoommateModel
                 {
                     FirstName = item.FirstName,
-                    LastName = item.LastName
+                    LastName = item.LastName, 
+                    MonthlyPayment = item.MonthlyPayment
                 });
             }
 
