@@ -79,6 +79,7 @@
     <Build Include="dbo\StoredProcedures\Roommates\sp_GetRoommateById.sql" />
     <Build Include="dbo\StoredProcedures\Roommates\sp_RemoveRoommate.sql" />
     <Build Include="dbo\StoredProcedures\Roommates\sp_UpdatePayment.sql" />
+    <Build Include="dbo\StoredProcedures\Roommates\sp_UpdateRoommate.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />

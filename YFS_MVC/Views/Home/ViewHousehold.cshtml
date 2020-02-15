@@ -17,41 +17,42 @@
     
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MonthlyPayment)
-            </th>
-        </tr>
-    </thead>
+    <table class="table table-bordered">
+        <thead>
 
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MonthlyPayment)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-success" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.RoommateId }, new {@class = "btn btn-danger" })
-            </td>
-        </tr>
-        }
-    </tbody>
+            <tr class="bg-primary">
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MonthlyPayment)
+                </th>
+            </tr>
+        </thead>
 
-</table>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MonthlyPayment)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new {  roommateId=item.RoommateId  }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.RoommateId }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>

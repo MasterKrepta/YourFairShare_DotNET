@@ -118,5 +118,31 @@ namespace YFS_MVC.Controllers
             //}
             return View();
         }
+
+        public ActionResult Edit(int roommateId)
+        {
+            var data = GetRoommateById(roommateId);
+            //Todo should be mapping this to datalibrary model
+            RoommateModel r = new RoommateModel
+            {
+                RoommateId = data.RoommateId,
+                FirstName = data.FirstName,
+                LastName = data.LastName,
+                MonthlyPayment = data.MonthlyPayment
+            };
+
+            return View(r);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(RoommateModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View();
+
+        }
     }
 }

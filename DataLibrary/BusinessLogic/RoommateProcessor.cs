@@ -82,5 +82,12 @@ namespace DataLibrary.BusinessLogic
             var sql = $"sp_RemoveRoommate '{id}'";
             SqlDataAccess.SaveData<RoommateModel>(sql, roommate);
         }
+
+        public static void UpdateRoommate(int id)
+        {
+            //TODO create data to send
+            string sql = $"sp_UpdateRoommate '{id}'";
+            //SqlDataAccess.SaveData<RoommateModel>(sql, roommate);
+        }
     }
 }

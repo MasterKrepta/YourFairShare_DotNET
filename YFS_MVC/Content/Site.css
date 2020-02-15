@@ -23,9 +23,7 @@ textarea {
     max-width: 280px;
 }
 
-td {
-    min-width: 200px;
+tbody>tr:nth-child(odd) {
+    background-color: lightcyan;
 }
-tr:nth-child(even) {
-    background-color: lightgray;
-}
+
