@@ -3,5 +3,5 @@
 AS
 begin
 	delete from dbo.Bills
-	where Name = @Name;
+	where BillName = @Name;
 end

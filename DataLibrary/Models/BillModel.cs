@@ -8,7 +8,8 @@ namespace DataLibrary.Models
 {
     public class BillModel
     {
-        public string Name { get; set; }
+        public int ID { get; set; }
+        public string BillName { get; set; }
         public decimal Amount { get; set; }
         public DateTime DueDate { get; set; }
     }

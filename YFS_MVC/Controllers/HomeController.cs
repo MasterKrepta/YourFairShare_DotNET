@@ -139,9 +139,9 @@ namespace YFS_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                UpdateRoommate(model.RoommateId, model.FirstName, model.LastName);
             }
-            return View();
+            return RedirectToAction("ViewHousehold");
 
         }
     }

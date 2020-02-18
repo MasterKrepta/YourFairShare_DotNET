@@ -18,7 +18,7 @@
     <thead>
         <tr  class="bg-primary">
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.BillName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Amount)
@@ -33,7 +33,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.BillName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Amount)
@@ -42,8 +42,8 @@
                     @Html.DisplayFor(modelItem => item.DueDate)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-success" })
-                    @Html.ActionLink("Delete", "Delete", new { name = item.Name }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Edit", "Edit", new { BillName = item.BillName  }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Delete", "Delete", new { BillName = item.BillName }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }

@@ -8,14 +8,14 @@ namespace YFS_MVC.Models
 {
     public class BillModel
     {
+        public int ID { get; set; }
         
-        [Required]
-        public string Name { get; set; }
+        public string BillName { get; set; }
 
-        [Required]
+        
         public decimal Amount { get; set; }
 
-        [Required]
+        
         public DateTime DueDate { get; set; }
 
     }

@@ -14,23 +14,18 @@ namespace DataLibrary.BusinessLogic
         {
             BillModel data = new BillModel
             {
-                Name = billName,
+                BillName = billName,
                 Amount = amount,
                 DueDate = duedate
             };
             
-            //string sql = @"insert into dbo.Bills (Name, Amount, DueDate)
-            //                Values(@Name, @Amount, @DueDate);";
-            string sql = $"sp_AddNewBill '{data.Name}', '{data.Amount}', '{data.DueDate}'";
+            string sql = $"sp_AddNewBill '{data.BillName}', '{data.Amount}', '{data.DueDate}'";
             UpdatePayments(data.Amount);
             return SqlDataAccess.SaveData(sql, data);
         }
 
         public static List<BillModel> LoadBills()
         {
-            //string sql = @"select Id, Name, Amount, DueDate
-            //              from dbo.Bills;";
-
             string sql = "sp_GetAllBills";
             
             return SqlDataAccess.LoadData<BillModel>(sql);
@@ -51,22 +46,46 @@ namespace DataLibrary.BusinessLogic
         }
 
 
-        public static List<BillModel> GetBill(string name)
+        public static BillModel GetBill(string Name)
         {
-            string sql = $"sp_GetBillByName '{name}'";
+            string sql = $"sp_GetBillByName '{Name}'";
             
-            return SqlDataAccess.LoadData<BillModel>(sql); 
+            var data = SqlDataAccess.LoadData<BillModel>(sql);
+
+            BillModel bill = new BillModel
+            {
+                BillName = data[0].BillName,
+                Amount = data[0].Amount,
+                DueDate = data[0].DueDate
+                
+            };
+            return bill;
         }
+
         public static void DeleteBill(string billName, decimal amount, DateTime duedate)
         {
             BillModel bill = new BillModel{
-                Name = billName,
+                BillName = billName,
                 Amount = amount,
                 DueDate = duedate
             };
 
-            var sql = $"sp_RemoveBill '{bill.Name}'";
+            var sql = $"sp_RemoveBill '{bill.BillName}'";
             SqlDataAccess.SaveData<BillModel>(sql, bill);
+            UpdatePayments();
+        }
+
+        public static void UpdateBill(string name, decimal amount, DateTime dueDate)
+        {
+            BillModel data = new BillModel
+            {
+                BillName = name,
+                Amount = amount,
+                DueDate = dueDate
+            };
+            string sql = $"sp_UpdateBill '{name}', '{amount}', '{dueDate}'";
+            SqlDataAccess.SaveData<BillModel>(sql, data);
+            UpdatePayments();
         }
     }
 }

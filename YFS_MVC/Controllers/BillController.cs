@@ -24,7 +24,7 @@ namespace YFS_MVC.Controllers
             {
                 bills.Add(new BillModel
                 {
-                    Name = item.Name,
+                    BillName = item.BillName,
                     Amount = item.Amount,
                     DueDate = item.DueDate
                 });
@@ -45,7 +45,7 @@ namespace YFS_MVC.Controllers
             if (ModelState.IsValid)
             {
                 int recordsCreated = CreateBill(
-                                model.Name,
+                                model.BillName,
                                 model.Amount,
                                 model.DueDate);
                 return RedirectToAction("ViewBills");
@@ -60,9 +60,9 @@ namespace YFS_MVC.Controllers
             var data = GetBill(name);
             BillModel model = new BillModel
             {
-                Name = data[0].Name,
-                Amount = data[0].Amount,
-                DueDate = data[0].DueDate
+                BillName = data.BillName,
+                Amount = data.Amount,
+                DueDate = data.DueDate
 
             };
 
@@ -74,12 +74,37 @@ namespace YFS_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                DeleteBill(model.Name, model.Amount, model.DueDate);
+                DeleteBill(model.BillName, model.Amount, model.DueDate);
                 UpdatePayments(model.Amount);
                 return RedirectToAction("ViewBills");
             }
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Edit(string BillName)
+        {
+            var data = GetBill(BillName);
+            //Todo should be mapping this to datalibrary model
+            BillModel b = new BillModel
+            {
+                BillName = data.BillName,
+                Amount = data.Amount,
+                DueDate = data.DueDate
+            };
+
+            return View(b);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(BillModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                UpdateBill(model.BillName, model.Amount, model.DueDate);
+            }
+            return RedirectToAction("ViewBills");
+
+        }
     }
 }

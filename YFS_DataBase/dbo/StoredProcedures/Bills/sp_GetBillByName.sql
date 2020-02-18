@@ -4,5 +4,5 @@
 AS
 begin
 	SELECT * from dbo.Bills
-	where Name = @Name;
+	where BillName = @Name;
 end

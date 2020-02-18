@@ -80,6 +80,8 @@
     <Build Include="dbo\StoredProcedures\Roommates\sp_RemoveRoommate.sql" />
     <Build Include="dbo\StoredProcedures\Roommates\sp_UpdatePayment.sql" />
     <Build Include="dbo\StoredProcedures\Roommates\sp_UpdateRoommate.sql" />
+    <Build Include="dbo\StoredProcedures\Bills\sp_UpdateBill.sql" />
+    <Build Include="dbo\Tables\Payment.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />

@@ -4,6 +4,7 @@ using System.Text;
 using DataLibrary.DataAccess;
 using DataLibrary.Models;
 
+
 namespace DataLibrary.BusinessLogic
 {
     public static class RoommateProcessor
@@ -83,11 +84,18 @@ namespace DataLibrary.BusinessLogic
             SqlDataAccess.SaveData<RoommateModel>(sql, roommate);
         }
 
-        public static void UpdateRoommate(int id)
+        public static void UpdateRoommate(int id, string firstName, string lastName)
         {
             //TODO create data to send
-            string sql = $"sp_UpdateRoommate '{id}'";
-            //SqlDataAccess.SaveData<RoommateModel>(sql, roommate);
+            RoommateModel data = new RoommateModel
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                MonthlyPayment = (decimal)CalculatePayment()
+            };
+            string sql = $"sp_UpdateRoommate '{id}', '{firstName}', '{lastName}'";
+            SqlDataAccess.SaveData<RoommateModel>(sql, data);
         }
+
     }
 }
