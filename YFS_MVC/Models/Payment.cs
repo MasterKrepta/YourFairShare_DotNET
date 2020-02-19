@@ -10,6 +10,7 @@ namespace YFS_MVC.Models
         public int Id { get; set; }
         public DateTime DatePaid { get; set; }
         public decimal Amount { get; set; }
+        //todo how should i store this?
         public List<RoommateModel> RoomatesPaidUp { get; set; }
     }
 }
