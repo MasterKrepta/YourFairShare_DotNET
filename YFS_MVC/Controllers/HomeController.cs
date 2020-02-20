@@ -8,16 +8,41 @@ using static DataLibrary.BusinessLogic.RoommateProcessor;
 using static DataLibrary.BusinessLogic.BillProcessor;
 using YFS_MVC.ViewModels;
 using YFS_MVC.Models;
+using System.Dynamic;
 
 namespace YFS_MVC.Controllers
 {
     public class HomeController : Controller
     {
 
-        
+
         public ActionResult Index()
         {
-            return View();
+            var roommateData = LoadRoommates();
+            var billData = LoadBills();
+            HouseHoldViewModel house = new HouseHoldViewModel();
+
+            foreach (var item in roommateData)
+            {
+                house.Roommates.Add(new RoommateModel
+                {
+                    RoommateId = item.RoommateId,
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    MonthlyPayment = item.MonthlyPayment
+                });
+            }
+
+            foreach (var item in billData)
+            {
+                house.Bills.Add(new BillModel
+                {
+                    BillName = item.BillName,
+                    Amount = item.AmountDue,
+                    DueDate = item.DueDate
+                });
+            }
+            return View(house);
         }
 
         public ActionResult About()

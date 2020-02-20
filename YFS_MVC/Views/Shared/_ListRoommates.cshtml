@@ -1,0 +1,15 @@
+﻿@model IEnumerable<YFS_MVC.Models.RoommateModel>
+
+<p>
+    @Html.ActionLink("Add Roommate", "Join")
+</p>
+
+<ul class="list-unstyled">
+    @foreach (var item in Model)
+    {
+        
+        <li class="p-2">@Html.DisplayFor(modelItem => item.FullName)</li>        
+        
+    }
+</ul>
+

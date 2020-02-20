@@ -1,0 +1,17 @@
+﻿@model IEnumerable<YFS_MVC.Models.BillModel>
+
+<p>
+    @Html.ActionLink("New Bill", "AddBill")
+</p>
+
+
+<ul class="list-unstyled">
+    @foreach (var item in Model)
+    {
+
+        <li class="p-2">@Html.DisplayFor(modelItem => item.BillName)</li>
+
+
+
+    }
+</ul>

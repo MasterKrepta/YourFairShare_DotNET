@@ -8,8 +8,8 @@ namespace YFS_MVC.ViewModels
 {
     public class HouseHoldViewModel
     {
-        
-        public List<RoommateModel> Roommates { get; set; }
-        public List<BillModel> Bills { get; set; }
+
+        public List<RoommateModel> Roommates { get; set; } = new List<RoommateModel>();
+        public List<BillModel> Bills { get; set; } = new List<BillModel>();
     }
 }

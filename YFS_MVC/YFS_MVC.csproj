@@ -285,6 +285,9 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Payment\ListPayments.cshtml" />
     <Content Include="Views\Payment\AddPayment.cshtml" />
+    <Content Include="Views\Home\Index - Copy.cshtml" />
+    <Content Include="Views\Shared\_ListRoommates.cshtml" />
+    <Content Include="Views\Shared\_ListBills.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

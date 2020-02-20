@@ -18,6 +18,14 @@ namespace YFS_MVC.Models
         [Required(ErrorMessage = "Enter your Last name")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
         public decimal MonthlyPayment { get; set; }
     }
 }
