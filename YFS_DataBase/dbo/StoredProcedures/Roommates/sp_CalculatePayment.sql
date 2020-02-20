@@ -2,5 +2,5 @@
 	
 AS
 begin
-	SELECT [Amount] from dbo.Bills
+	SELECT AmountDue from dbo.Bills
 end

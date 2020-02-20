@@ -63,6 +63,7 @@
     <Folder Include="dbo\Views" />
     <Folder Include="dbo\StoredProcedures\Bills" />
     <Folder Include="dbo\StoredProcedures\Roommates" />
+    <Folder Include="dbo\StoredProcedures\Payment" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\YFS_DataBase.publish.xml" />
@@ -82,6 +83,8 @@
     <Build Include="dbo\StoredProcedures\Roommates\sp_UpdateRoommate.sql" />
     <Build Include="dbo\StoredProcedures\Bills\sp_UpdateBill.sql" />
     <Build Include="dbo\Tables\Payment.sql" />
+    <Build Include="dbo\StoredProcedures\Payment\sp_GetAllPayments.sql" />
+    <Build Include="dbo\StoredProcedures\Payment\sp_AddPayment.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />

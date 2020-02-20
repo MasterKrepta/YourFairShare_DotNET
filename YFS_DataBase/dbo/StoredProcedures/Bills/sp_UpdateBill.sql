@@ -5,7 +5,7 @@
 AS
 begin
 	update Bills
-	set Amount = @amount, DueDate = @dueDate
+	set AmountDue = @amount, DueDate = @dueDate
 	where [BillName] = @name
 
 end

@@ -2,5 +2,5 @@
 	
 AS
 begin
-	SELECT [Id], BillName, [Amount], [DueDate] from dbo.Bills
+	SELECT [Id], BillName, AmountDue, [DueDate] from dbo.Bills
 end

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace YFS_MVC.Models
+namespace DataLibrary.Models
 {
     public class Payment
     {

@@ -10,7 +10,7 @@ namespace DataLibrary.Models
     {
         public int ID { get; set; }
         public string BillName { get; set; }
-        public decimal Amount { get; set; }
+        public decimal AmountDue { get; set; }
         public DateTime DueDate { get; set; }
     }
 }

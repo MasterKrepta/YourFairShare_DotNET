@@ -25,7 +25,7 @@ namespace YFS_MVC.Controllers
                 bills.Add(new BillModel
                 {
                     BillName = item.BillName,
-                    Amount = item.Amount,
+                    Amount = item.AmountDue,
                     DueDate = item.DueDate
                 });
             }
@@ -61,7 +61,7 @@ namespace YFS_MVC.Controllers
             BillModel model = new BillModel
             {
                 BillName = data.BillName,
-                Amount = data.Amount,
+                Amount = data.AmountDue,
                 DueDate = data.DueDate
 
             };
@@ -89,7 +89,7 @@ namespace YFS_MVC.Controllers
             BillModel b = new BillModel
             {
                 BillName = data.BillName,
-                Amount = data.Amount,
+                Amount = data.AmountDue,
                 DueDate = data.DueDate
             };
 

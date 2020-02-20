@@ -15,12 +15,12 @@ namespace DataLibrary.BusinessLogic
             BillModel data = new BillModel
             {
                 BillName = billName,
-                Amount = amount,
+                AmountDue = amount,
                 DueDate = duedate
             };
             
-            string sql = $"sp_AddNewBill '{data.BillName}', '{data.Amount}', '{data.DueDate}'";
-            UpdatePayments(data.Amount);
+            string sql = $"sp_AddNewBill '{data.BillName}', '{data.AmountDue}', '{data.DueDate}'";
+            UpdatePayments(data.AmountDue);
             return SqlDataAccess.SaveData(sql, data);
         }
 
@@ -38,7 +38,7 @@ namespace DataLibrary.BusinessLogic
             decimal newPayments = newBill;
             foreach (var item in data)
             {
-                newPayments += item.Amount;
+                newPayments += item.AmountDue;
             }
             newPayments /= numRoommates;
             string sql = $"sp_UpdatePayment '{newPayments}'";
@@ -55,7 +55,7 @@ namespace DataLibrary.BusinessLogic
             BillModel bill = new BillModel
             {
                 BillName = data[0].BillName,
-                Amount = data[0].Amount,
+                AmountDue = data[0].AmountDue,
                 DueDate = data[0].DueDate
                 
             };
@@ -66,7 +66,7 @@ namespace DataLibrary.BusinessLogic
         {
             BillModel bill = new BillModel{
                 BillName = billName,
-                Amount = amount,
+                AmountDue = amount,
                 DueDate = duedate
             };
 
@@ -80,7 +80,7 @@ namespace DataLibrary.BusinessLogic
             BillModel data = new BillModel
             {
                 BillName = name,
-                Amount = amount,
+                AmountDue = amount,
                 DueDate = dueDate
             };
             string sql = $"sp_UpdateBill '{name}', '{amount}', '{dueDate}'";

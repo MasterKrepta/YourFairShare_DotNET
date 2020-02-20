@@ -13,5 +13,20 @@ namespace YFS_MVC.Controllers
         {
             return View();
         }
+
+        public ActionResult ListPayments()
+        {
+            return View();
+        }
+
+        public ActionResult AddPayment()
+        {
+            return View();
+        }
+
+        public ActionResult EditPayment()
+        {
+            return View();
+        }
     }
 }
