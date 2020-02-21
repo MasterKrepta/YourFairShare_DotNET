@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DataLibrary.DataAccess;
 using DataLibrary.Models;
 
+
 namespace DataLibrary.BusinessLogic
 {
     public static class PaymentProcessor
@@ -16,19 +17,32 @@ namespace DataLibrary.BusinessLogic
 
             return SqlDataAccess.LoadData<Payment>(sql);
         }
+
+        public static int CreatePayment(BillModel bill, RoommateModel roommate, decimal amount)
+        {
+            var bills = BillProcessor.LoadBills();
+            var roommates = RoommateProcessor.LoadRoommates();
+            
+            //display payment
+
+            
+            return 0;
+        }
+
+
+        //public static int CreateBill(string billName, decimal amount, DateTime duedate)
+        //{
+        //    BillModel data = new BillModel
+        //    {
+        //        BillName = billName,
+        //        Amount = amount,
+        //        DueDate = duedate
+        //    };
+
+        //    string sql = $"sp_AddNewBill '{data.BillName}', '{data.Amount}', '{data.DueDate}'";
+        //    UpdatePayments(data.Amount);
+        //    return SqlDataAccess.SaveData(sql, data);
+        //}
     }
 
-    //public static int CreateBill(string billName, decimal amount, DateTime duedate)
-    //{
-    //    BillModel data = new BillModel
-    //    {
-    //        BillName = billName,
-    //        Amount = amount,
-    //        DueDate = duedate
-    //    };
-
-    //    string sql = $"sp_AddNewBill '{data.BillName}', '{data.Amount}', '{data.DueDate}'";
-    //    UpdatePayments(data.Amount);
-    //    return SqlDataAccess.SaveData(sql, data);
-    //}
 }

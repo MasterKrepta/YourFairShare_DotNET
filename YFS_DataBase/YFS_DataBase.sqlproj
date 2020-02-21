@@ -85,6 +85,7 @@
     <Build Include="dbo\Tables\Payment.sql" />
     <Build Include="dbo\StoredProcedures\Payment\sp_GetAllPayments.sql" />
     <Build Include="dbo\StoredProcedures\Payment\sp_AddPayment.sql" />
+    <Build Include="dbo\StoredProcedures\Bills\sp_GetBillById.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />
