@@ -24,9 +24,11 @@ namespace YFS_MVC.Controllers
             {
                 bills.Add(new BillModel
                 {
+                    ID = item.ID,
                     BillName = item.BillName,
                     Amount = item.AmountDue,
-                    DueDate = item.DueDate
+                    DueDate = item.DueDate, 
+                    IsCurrent = item.IsCurrent
                 });
             }
             return View(bills);
@@ -55,11 +57,12 @@ namespace YFS_MVC.Controllers
         }
         
         [HttpGet]
-        public ActionResult Delete(string name)
+        public ActionResult Delete(int id)
         {
-            var data = GetBill(name);
+            var data = GetBillById(id);
             BillModel model = new BillModel
             {
+                ID = id,
                 BillName = data.BillName,
                 Amount = data.AmountDue,
                 DueDate = data.DueDate
@@ -74,7 +77,7 @@ namespace YFS_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                DeleteBill(model.BillName, model.Amount, model.DueDate);
+                DeleteBill(model.ID);
                 UpdatePayments(model.Amount);
                 return RedirectToAction("ViewBills");
             }
@@ -82,12 +85,13 @@ namespace YFS_MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(string BillName)
+        public ActionResult Edit(int id)
         {
-            var data = GetBill(BillName);
+            var data = GetBillById(id);
             //Todo should be mapping this to datalibrary model
             BillModel b = new BillModel
             {
+                ID = data.ID,
                 BillName = data.BillName,
                 Amount = data.AmountDue,
                 DueDate = data.DueDate

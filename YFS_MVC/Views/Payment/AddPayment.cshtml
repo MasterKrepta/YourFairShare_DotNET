@@ -11,25 +11,21 @@
                 <div class="form-horizontal">
                     <h4>Add Payment</h4>
                     <hr />
-                    <label for="bills">Select a Bill</label>
-                    <select class="bills">
-                        <option value="___" selected></option>
-                        @foreach (var item in Model.Bills)
-                        {
-                            <option value="@item.BillName">@item.BillName</option>
-                        }
-                    </select>
-                    <select>
-                        <option value="___" selected></option>
-                        @foreach (var item in Model.Roommates)
-                        {
-                            <option value="@item.FullName">@item.FullName</option>
-                            //@Html.DisplayFor(model => model.Roommates)
-                            //@Html.DropDownListFor(model => model.Roommates, new SelectList(Model.Roommates, "RoommateId", "FullName", new { @class = "form-control" })
+                    
 
-                        }
-                    </select>
-
+                    <table>
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Payment.RoommateId)</td>
+                            <td>@Html.DropDownListFor(model => model.Payment.RoommateId, new SelectList(Model.Roommates, "RoommateID", "FullName"), "Select")</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Payment.BillId)</td>
+                            <td>@Html.DropDownListFor(model => model.Payment.BillId, new SelectList(Model.Bills, "ID", "BillName"), "Select")</td>
+                        </tr>
+                        
+                        
+                    </table>
                     </div>
                     <hr />
                     <div class="form-group">

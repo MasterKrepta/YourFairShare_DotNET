@@ -8,9 +8,9 @@ namespace DataLibrary.Models
     public class Payment
     {
         public int Id { get; set; }
-        public DateTime DatePaid { get; set; } = DateTime.Now;
-        public BillModel Bill { get; set; }
+        public int BillId { get; set; }
+        public int RoommateId { get; set; }
         public decimal Amount { get; set; }
-        public RoommateModel roommate { get; set; }
+        public DateTime DatePaid { get; set; } = DateTime.Now;
     }
 }

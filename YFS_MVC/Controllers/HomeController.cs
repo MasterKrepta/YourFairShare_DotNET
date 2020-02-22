@@ -39,7 +39,8 @@ namespace YFS_MVC.Controllers
                 {
                     BillName = item.BillName,
                     Amount = item.AmountDue,
-                    DueDate = item.DueDate
+                    DueDate = item.DueDate,
+                    IsCurrent = item.IsCurrent
                 });
             }
             return View(house);

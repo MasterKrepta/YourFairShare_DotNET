@@ -17,6 +17,7 @@
 <table class="table">
     <thead>
         <tr  class="bg-primary">
+            
             <th>
                 @Html.DisplayNameFor(model => model.BillName)
             </th>
@@ -31,21 +32,21 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BillName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DueDate)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { BillName = item.BillName  }, new { @class = "btn btn-success" })
-                    @Html.ActionLink("Delete", "Delete", new { BillName = item.BillName }, new { @class = "btn btn-danger" })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
         }
     </tbody>
 </table>

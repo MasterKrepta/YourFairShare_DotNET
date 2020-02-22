@@ -55,14 +55,14 @@ namespace YFS_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                //int recordsCreated = PaymentProcessor.CreatePayment(
-                //                model.Payment.Bill,
-                //                model.Payment.roommate,
-                //                model.Payment.Amount);
+                int recordsCreated = PaymentProcessor.CreatePayment(
+                                model.Payment.BillId,
+                                model.Payment.RoommateId,
+                                model.Payment.Amount);
 
                 //todo get bill and roommate from 
 
-                
+
                 return RedirectToAction("Index");
             }
 

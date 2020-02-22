@@ -16,7 +16,8 @@ namespace DataLibrary.BusinessLogic
             {
                 BillName = billName,
                 AmountDue = amount,
-                DueDate = duedate
+                DueDate = duedate,
+                IsCurrent = true
             };
             
             string sql = $"sp_AddNewBill '{data.BillName}', '{data.AmountDue}', '{data.DueDate}'";
@@ -46,9 +47,9 @@ namespace DataLibrary.BusinessLogic
         }
 
 
-        public static BillModel GetBill(string Name)
+        public static BillModel GetBillById(int id)
         {
-            string sql = $"sp_GetBillByName '{Name}'";
+            string sql = $"sp_GetBillById '{id}'";
             
             var data = SqlDataAccess.LoadData<BillModel>(sql);
 
@@ -62,15 +63,13 @@ namespace DataLibrary.BusinessLogic
             return bill;
         }
 
-        public static void DeleteBill(string billName, decimal amount, DateTime duedate)
+        public static void DeleteBill(int id)
         {
             BillModel bill = new BillModel{
-                BillName = billName,
-                AmountDue = amount,
-                DueDate = duedate
+                ID = id,
             };
 
-            var sql = $"sp_RemoveBill '{bill.BillName}'";
+            var sql = $"sp_RemoveBill '{bill.ID}'";
             SqlDataAccess.SaveData<BillModel>(sql, bill);
             UpdatePayments();
         }

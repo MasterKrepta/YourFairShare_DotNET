@@ -1,7 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[sp_AddPayment]
-	@Date datetime2(7),
+	@BillId int,
+	@RoommateId int,
 	@Amount decimal
 AS
 begin
-		insert into dbo.Payment values(@Date, @Amount)
-	end
+		insert into dbo.Payment (BillId, RoommateId, AmountPaid, DatePaid)
+						  values(@BillId, @RoommateId, @Amount, SYSDATETIME())
+end

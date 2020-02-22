@@ -18,15 +18,47 @@ namespace DataLibrary.BusinessLogic
             return SqlDataAccess.LoadData<Payment>(sql);
         }
 
-        public static int CreatePayment(BillModel bill, RoommateModel roommate, decimal amount)
+        public static int CreatePayment(int billId, int roommateId, decimal amount)
         {
-            var bills = BillProcessor.LoadBills();
-            var roommates = RoommateProcessor.LoadRoommates();
-            
+            var bills = BillProcessor.GetBillById(billId);
+            var roommates = RoommateProcessor.GetRoommateById(roommateId);
+            var data = new Payment{
+                RoommateId = roommateId,
+                BillId = billId,
+                Amount = amount
+            };
+
             //display payment
+            string sql = $"sp_AddPayment '{billId}', '{roommateId}', '{amount}'";
+            SqlDataAccess.SaveData(sql, data);
+            decimal newAmount = bills.AmountDue - amount;
+            ApplyPayment(newAmount, billId);
+            return 0;
 
             
-            return 0;
+        }
+
+        private static void ApplyPayment(decimal newAmount, int billId)
+        {
+            string sql = $"sp_ApplyPayment '{billId}', '{newAmount}'";
+            var data = new BillModel
+            {
+                AmountDue = newAmount
+            };
+            SqlDataAccess.SaveData(sql, data);
+            CheckForPayed(billId);
+        }
+
+        private static void CheckForPayed(int billId)
+        {
+            var bill = BillProcessor.GetBillById(billId);
+
+            if (bill.AmountDue <= 0)
+            {
+                var data = new BillModel();
+                string sql = $"spMarkPaid, {billId}";
+                SqlDataAccess.SaveData(sql, data);
+            }
         }
 
 

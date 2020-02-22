@@ -18,5 +18,7 @@ namespace YFS_MVC.Models
         
         public DateTime DueDate { get; set; }
 
+        public bool IsCurrent { get; set; }
+
     }
 }

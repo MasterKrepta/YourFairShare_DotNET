@@ -12,5 +12,6 @@ namespace DataLibrary.Models
         public string BillName { get; set; }
         public decimal AmountDue { get; set; }
         public DateTime DueDate { get; set; }
+        public bool IsCurrent { get; set; }
     }
 }

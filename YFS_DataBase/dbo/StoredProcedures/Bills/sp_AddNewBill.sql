@@ -4,6 +4,7 @@
 	@DueDate datetime2(7)
 AS
 	begin
-		insert into dbo.Bills values(@BillName, @Amount, @DueDate)
+		insert into dbo.Bills (BillName, AmountDue, DueDate)
+								values(@BillName, @Amount, @DueDate)
 	end
 
