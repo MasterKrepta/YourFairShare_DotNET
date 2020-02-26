@@ -15,23 +15,24 @@ namespace DataLibrary.BusinessLogic
         {
             string sql = "sp_GetAllPayments";
 
-            return SqlDataAccess.LoadData<Payment>(sql);
+            var data = SqlDataAccess.LoadData<Payment>(sql);
+            return data;
         }
 
-        public static int CreatePayment(int billId, int roommateId, decimal amount)
+        public static int CreatePayment(int billId, int roommateId, decimal amountPaid)
         {
             var bills = BillProcessor.GetBillById(billId);
             var roommates = RoommateProcessor.GetRoommateById(roommateId);
             var data = new Payment{
                 RoommateId = roommateId,
                 BillId = billId,
-                Amount = amount
+                AmountPaid = amountPaid
             };
 
             //display payment
-            string sql = $"sp_AddPayment '{billId}', '{roommateId}', '{amount}'";
+            string sql = $"sp_AddPayment '{billId}', '{roommateId}', '{amountPaid}'";
             SqlDataAccess.SaveData(sql, data);
-            decimal newAmount = bills.AmountDue - amount;
+            decimal newAmount = bills.AmountDue - amountPaid;
             ApplyPayment(newAmount, billId);
             return 0;
 

@@ -18,6 +18,8 @@ namespace YFS_MVC.Controllers
             return View();
         }
 
+
+        
         public ActionResult ListPayments()
         {
 
@@ -28,7 +30,7 @@ namespace YFS_MVC.Controllers
             {
                 payments.Add(new PaymentViewModel
                 {
-                    Payment = new Payment(p.Id, p.BillId, p.RoommateId, p.Amount, p.DatePaid)
+                    Payment = new Payment(p.Id, p.BillId, p.RoommateId, p.AmountPaid, p.DatePaid)
                    
                 }); ; 
                
@@ -72,7 +74,7 @@ namespace YFS_MVC.Controllers
                 PaymentProcessor.CreatePayment(
                                 model.Payment.BillId,
                                 model.Payment.RoommateId,
-                                model.Payment.Amount);
+                                model.Payment.AmountPaid);
 
                 //todo get bill and roommate from 
 

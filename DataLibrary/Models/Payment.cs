@@ -10,7 +10,7 @@ namespace DataLibrary.Models
         public int Id { get; set; }
         public int BillId { get; set; }
         public int RoommateId { get; set; }
-        public decimal Amount { get; set; }
+        public decimal AmountPaid { get; set; }
         public DateTime DatePaid { get; set; } = DateTime.Now;
 
         public Payment(int id, int billId, int roommateId, decimal amount, DateTime datePaid)
@@ -18,13 +18,13 @@ namespace DataLibrary.Models
             this.Id = id;
             this.BillId = billId;
             this.RoommateId = roommateId;
-            this.Amount = amount;
+            this.AmountPaid = amount;
             this.DatePaid = datePaid;
         }
 
         public Payment()
         {
-
+            var i = 0;
         }
     }
 }
