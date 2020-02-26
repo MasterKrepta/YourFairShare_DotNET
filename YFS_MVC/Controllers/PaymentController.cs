@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using YFS_MVC.ViewModels;
 using DataLibrary.BusinessLogic;
+using YFS_MVC.Models;
 
 namespace YFS_MVC.Controllers
 {
@@ -19,7 +20,20 @@ namespace YFS_MVC.Controllers
 
         public ActionResult ListPayments()
         {
-            return View();
+
+            var data = PaymentProcessor.LoadPayments();
+            List<PaymentViewModel> payments = new List<PaymentViewModel>();
+
+            foreach (var p in data)
+            {
+                payments.Add(new PaymentViewModel
+                {
+                    Payment = new Payment(p.Id, p.BillId, p.RoommateId, p.Amount, p.DatePaid)
+                   
+                }); ; 
+               
+            }
+            return View(payments);
         }
 
         public ActionResult AddPayment()
@@ -55,7 +69,7 @@ namespace YFS_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                int recordsCreated = PaymentProcessor.CreatePayment(
+                PaymentProcessor.CreatePayment(
                                 model.Payment.BillId,
                                 model.Payment.RoommateId,
                                 model.Payment.Amount);

@@ -12,5 +12,19 @@ namespace DataLibrary.Models
         public int RoommateId { get; set; }
         public decimal Amount { get; set; }
         public DateTime DatePaid { get; set; } = DateTime.Now;
+
+        public Payment(int id, int billId, int roommateId, decimal amount, DateTime datePaid)
+        {
+            this.Id = id;
+            this.BillId = billId;
+            this.RoommateId = roommateId;
+            this.Amount = amount;
+            this.DatePaid = datePaid;
+        }
+
+        public Payment()
+        {
+
+        }
     }
 }

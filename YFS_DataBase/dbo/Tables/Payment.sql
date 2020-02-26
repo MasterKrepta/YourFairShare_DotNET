@@ -5,6 +5,5 @@
 	[AmountPaid] MONEY NOT NULL, 
 	[BillId] INT NOT NULL, 
 	[RoommateId] INT NOT NULL, 
-	CONSTRAINT [FK_Payment_ToRoommate] FOREIGN KEY (Id) REFERENCES Roommates(RoommateId), 
-	CONSTRAINT [FK_Payment_ToBills] FOREIGN KEY (Id) REFERENCES Bills(Id)
+
 )

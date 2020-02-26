@@ -35,7 +35,6 @@ namespace DataLibrary.BusinessLogic
             ApplyPayment(newAmount, billId);
             return 0;
 
-            
         }
 
         private static void ApplyPayment(decimal newAmount, int billId)

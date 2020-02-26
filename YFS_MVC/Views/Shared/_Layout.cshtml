@@ -18,10 +18,35 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("House", "ViewHousehold", "Home", null, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Join", "Join", "Home", null, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("View Bills", "ViewBills", "Bill", null, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Add Bill", "AddBill", "Bill", null, new { @class = "nav-link" })</li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="roommatesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Roommates
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="roommatesDropdown">
+                        @Html.ActionLink("View Roommates", "ViewHousehold", "Home", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Join", "Join", "Home", null, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="billDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Bills
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="billDropdown">
+                        @Html.ActionLink("View Bills", "ViewBills", "Bill", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Add Bill", "AddBill", "Bill", null, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="paymentDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Payments
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="paymentDropdown">
+                        @Html.ActionLink("View Payments", "ListPayments", "Payment", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Make Payment", "AddPayment", "Payment", null, new { @class = "dropdown-item" })
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
