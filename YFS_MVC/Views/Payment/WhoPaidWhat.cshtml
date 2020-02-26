@@ -1,0 +1,58 @@
+﻿@model IEnumerable<YFS_MVC.ViewModels.PaymentViewModel>
+
+@{
+    ViewBag.Title = "WhoPaidWhat";
+}
+
+<h2>WhoPaidWhat</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmountDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Roommate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payment.AmountPaid)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @Html.HiddenFor(modelItem => item.Payment.Id)
+            <td>
+                @Html.DisplayFor(modelItem => item.Bill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountDue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roommate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payment.AmountPaid)
+            </td>
+
+            <td>
+                @Html.ActionLink("Add Payment", "AddPayment", new
+                {@*billName =item.BillName*@}) |
+                @Html.ActionLink("Details", "Details", new { id = item.Payment.Id }) |
+
+            </td>
+        </tr>
+        @Html.ActionLink("Details", "Details", new { id = item.Payment.Id })
+}
+
+</table>

@@ -5,17 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using DataLibrary.DataAccess;
 using DataLibrary.Models;
-
+using DataLibrary.ViewModels;
 
 namespace DataLibrary.BusinessLogic
 {
     public static class PaymentProcessor
     {
-        public static List<Payment> LoadPayments()
+        public static List<PaymentModel> LoadPayments()
         {
             string sql = "sp_GetAllPayments";
 
-            var data = SqlDataAccess.LoadData<Payment>(sql);
+            var data = SqlDataAccess.LoadData<PaymentModel>(sql);
             return data;
         }
 
@@ -23,7 +23,7 @@ namespace DataLibrary.BusinessLogic
         {
             var bills = BillProcessor.GetBillById(billId);
             var roommates = RoommateProcessor.GetRoommateById(roommateId);
-            var data = new Payment{
+            var data = new PaymentModel{
                 RoommateId = roommateId,
                 BillId = billId,
                 AmountPaid = amountPaid
@@ -61,20 +61,35 @@ namespace DataLibrary.BusinessLogic
             }
         }
 
+        public static List<PaymentModel> GetBillsByWithPayers()
+        {
+            string sql = $"sp_GetBillsByWhoPaid";
+            var data = SqlDataAccess.LoadData<PaymentModel>(sql);
 
-        //public static int CreateBill(string billName, decimal amount, DateTime duedate)
-        //{
-        //    BillModel data = new BillModel
-        //    {
-        //        BillName = billName,
-        //        Amount = amount,
-        //        DueDate = duedate
-        //    };
 
-        //    string sql = $"sp_AddNewBill '{data.BillName}', '{data.Amount}', '{data.DueDate}'";
-        //    UpdatePayments(data.Amount);
-        //    return SqlDataAccess.SaveData(sql, data);
-        //}
+            return data;
+        }
+
+        public static PaymentModel GetPaymentById(int id)
+        {
+            string sql = $"sp_GetPaymentById '{id}'";
+            var data = SqlDataAccess.LoadData<PaymentModel>(sql);
+            PaymentModel result = new PaymentModel();
+            foreach (var item in data)
+            {
+                result = new PaymentModel
+                {
+                    Id = item.Id,
+                    RoommateId = item.RoommateId,
+                    BillId = item.BillId,
+                    AmountPaid = item.AmountPaid,
+                    DatePaid = item.DatePaid
+
+                };
+            }
+            return result;
+
+        }
     }
 
 }

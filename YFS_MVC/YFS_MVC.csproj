@@ -129,9 +129,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BillModel.cs" />
-    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\PaymentModel.cs" />
     <Compile Include="Models\RoommateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BillViewModel.cs" />
     <Compile Include="ViewModels\HouseHoldViewModel.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
   </ItemGroup>
@@ -289,6 +290,8 @@
     <Content Include="Views\Home\Index - Copy.cshtml" />
     <Content Include="Views\Shared\_ListRoommates.cshtml" />
     <Content Include="Views\Shared\_ListBills.cshtml" />
+    <Content Include="Views\Payment\WhoPaidWhat.cshtml" />
+    <Content Include="Views\Payment\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

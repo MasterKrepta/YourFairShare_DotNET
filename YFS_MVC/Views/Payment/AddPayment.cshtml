@@ -31,11 +31,11 @@
                     <div class="form-group">
 
                         <div class="col-md-4">
-                            @Html.LabelFor(model => model.Payment.Amount, htmlAttributes: new { @class = "control-label col-md-4" })
+                            @Html.LabelFor(model => model.Payment.AmountPaid, htmlAttributes: new { @class = "control-label col-md-4" })
                         </div>
                         <div class="col-md-8">
-                            @Html.EditorFor(model => model.Payment.Amount, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Payment.Amount, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.Payment.AmountPaid, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Payment.AmountPaid, "", new { @class = "text-danger" })
                         </div>
                     </div>
 

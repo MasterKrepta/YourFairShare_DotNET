@@ -1,11 +1,12 @@
-﻿using System;
+﻿using DataLibrary.BusinessLogic;
+using DataLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using YFS_MVC.Models;
-using DataLibrary.BusinessLogic;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace YFS_MVC.ViewModels
+namespace DataLibrary.ViewModels
 {
 	public class PaymentViewModel
 	{
@@ -17,19 +18,20 @@ namespace YFS_MVC.ViewModels
 				return data.AmountDue;
 			}
 		}
+
 		public PaymentModel Payment;
 
 		private string _roommate;
 
 		public string Roommate
 		{
-			get 
+			get
 			{
 				var data = RoommateProcessor.GetRoommateById(Payment.RoommateId);
 				_roommate = data.FullName;
-				return _roommate; 
+				return _roommate;
 			}
-		
+
 		}
 
 		private string _bill;
@@ -40,10 +42,8 @@ namespace YFS_MVC.ViewModels
 			{
 				var data = BillProcessor.GetBillById(Payment.BillId);
 				_bill = data.BillName;
-				return _bill; 
+				return _bill;
 			}
 		}
-
 	}
-	
 }

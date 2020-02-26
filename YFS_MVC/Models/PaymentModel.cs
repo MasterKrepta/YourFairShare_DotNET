@@ -5,7 +5,7 @@ using System.Web;
 
 namespace YFS_MVC.Models
 {
-    public class Payment
+    public class PaymentModel
     {
         public int Id { get; set; }
         public int BillId { get; set; }
@@ -13,7 +13,7 @@ namespace YFS_MVC.Models
         public decimal AmountPaid { get; set; }
         public DateTime DatePaid { get; set; } = DateTime.Now;
 
-        public Payment(int id, int billId, int roommateId, decimal amountPaid, DateTime datePaid)
+        public PaymentModel(int id, int billId, int roommateId, decimal amountPaid, DateTime datePaid)
         {
             this.Id = id;
             this.BillId = billId;
@@ -22,7 +22,7 @@ namespace YFS_MVC.Models
             this.DatePaid = datePaid;
         }
 
-        public Payment()
+        public PaymentModel()
         {
 
         }

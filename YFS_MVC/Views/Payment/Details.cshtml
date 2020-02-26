@@ -1,0 +1,49 @@
+﻿@model YFS_MVC.Models.PaymentModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BillId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BillId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoommateId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoommateId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatePaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatePaid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "WhoPaidWhat")
+</p>

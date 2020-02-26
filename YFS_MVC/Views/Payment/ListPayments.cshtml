@@ -4,11 +4,16 @@
     ViewBag.Title = "ListPayments";
 }
 
-<h2>ListPayments</h2>
+    <div class="container row">
+        <div class="col-md-9">
+            <h2 class="text-info">All Payments</h2>
+        </div>
 
-<p>
-    @Html.ActionLink("Create New", "AddPayment")
-</p>
+        <div class="col-md-3 ">
+            @Html.ActionLink("Create", "AddPayment", null, new { @class = "btn btn-info" })
+        </div>
+
+    </div>
 <table class="table">
     <tr>
         <th>

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DataLibrary.Models
 {
-    public class Payment
+    public class PaymentModel
     {
         public int Id { get; set; }
         public int BillId { get; set; }
@@ -13,7 +13,7 @@ namespace DataLibrary.Models
         public decimal AmountPaid { get; set; }
         public DateTime DatePaid { get; set; } = DateTime.Now;
 
-        public Payment(int id, int billId, int roommateId, decimal amount, DateTime datePaid)
+        public PaymentModel(int id, int billId, int roommateId, decimal amount, DateTime datePaid)
         {
             this.Id = id;
             this.BillId = billId;
@@ -22,9 +22,9 @@ namespace DataLibrary.Models
             this.DatePaid = datePaid;
         }
 
-        public Payment()
+        public PaymentModel()
         {
-            var i = 0;
+            
         }
     }
 }

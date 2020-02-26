@@ -64,6 +64,7 @@
     <Folder Include="dbo\StoredProcedures\Bills" />
     <Folder Include="dbo\StoredProcedures\Roommates" />
     <Folder Include="dbo\StoredProcedures\Payment" />
+    <Folder Include="ViewModels" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocation\YFS_DataBase.publish.xml" />
@@ -88,6 +89,8 @@
     <Build Include="dbo\StoredProcedures\Bills\sp_GetBillById.sql" />
     <Build Include="dbo\StoredProcedures\Payment\sp_ApplyPayment.sql" />
     <Build Include="dbo\StoredProcedures\Payment\spMarkPaid.sql" />
+    <Build Include="dbo\StoredProcedures\Payment\sp_GetBillsByWhoPaid.sql" />
+    <Build Include="dbo\StoredProcedures\Payment\sp_GetPaymentById.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />
