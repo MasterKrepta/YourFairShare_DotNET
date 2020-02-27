@@ -38,8 +38,14 @@ namespace YFS_MVC.Controllers
 			return View(payments);
 		}
 
-		public ActionResult AddPayment()
+		public ActionResult AddPayment(int? roommateId, int? billId)
 		{
+			if (roommateId != null && billId !=null)
+			{
+				
+				ViewBag.selectedRoommate = RoommateProcessor.GetRoommateById((int)roommateId).FullName; 
+				ViewBag.selectedBill = BillProcessor.GetBillById((int)billId).BillName;
+			}
 			HouseHoldViewModel model = new HouseHoldViewModel();
 			var billData = BillProcessor.LoadBills();
 			var roommateData = RoommateProcessor.LoadRoommates();

@@ -4,55 +4,61 @@
     ViewBag.Title = "WhoPaidWhat";
 }
 
-<h2>WhoPaidWhat</h2>
+<div class="container row">
+    <div class="col-md-9">
+        <h2 class="text-info">Who Paid What</h2>
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
     
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Bill)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AmountDue)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Roommate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Payment.AmountPaid)
-        </th>
 
-        <th></th>
-    </tr>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bill)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AmountDue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Roommate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Payment.AmountPaid)
+                </th>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            @Html.HiddenFor(modelItem => item.Payment.Id)
-            <td>
-                @Html.DisplayFor(modelItem => item.Bill)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmountDue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Roommate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Payment.AmountPaid)
-            </td>
+                <th></th>
+            </tr>
 
-            <td>
-                @Html.ActionLink("Add Payment", "AddPayment", new
-                {@*billName =item.BillName*@}) |
-                @Html.ActionLink("Details", "Details", new { id = item.Payment.Id }) |
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @Html.HiddenFor(modelItem => item.Payment.Id)
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bill)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AmountDue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Roommate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Payment.AmountPaid)
+                    </td>
 
-            </td>
-        </tr>
-        @Html.ActionLink("Details", "Details", new { id = item.Payment.Id })
-}
+                    <td>
+                        @Html.ActionLink("Add Payment", "AddPayment", new { roommateId = item.Payment.RoommateId, billId = item.Payment.BillId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Payment.Id }) |
 
-</table>
+                    </td>
+                </tr>
+
+            }
+
+        </table>
+
+    </div>
+</div>

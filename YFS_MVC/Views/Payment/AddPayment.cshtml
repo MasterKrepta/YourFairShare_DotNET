@@ -1,5 +1,13 @@
 ﻿@model YFS_MVC.ViewModels.HouseHoldViewModel
 
+    <div class="container row">
+        <div class="col-md-9">
+            <h2 class="text-info">Add Payment</h2>
+        </div>
+
+
+
+    </div>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -9,19 +17,18 @@
                     @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-                    <h4>Add Payment</h4>
                     <hr />
                     
 
                     <table>
                         <tr>
                             <td>@Html.DisplayNameFor(model => model.Payment.RoommateId)</td>
-                            <td>@Html.DropDownListFor(model => model.Payment.RoommateId, new SelectList(Model.Roommates, "RoommateID", "FullName"), "Select")</td>
+                            <td>@Html.DropDownListFor(model => model.Payment.RoommateId, new SelectList(Model.Roommates, "RoommateID", "FullName"), $"{ViewBag.selectedRoommate}")</td>
                             
                         </tr>
                         <tr>
                             <td>@Html.DisplayNameFor(model => model.Payment.BillId)</td>
-                            <td>@Html.DropDownListFor(model => model.Payment.BillId, new SelectList(Model.Bills, "ID", "BillName"), "Select")</td>
+                            <td>@Html.DropDownListFor(model => model.Payment.BillId, new SelectList(Model.Bills, "ID", "BillName"), $"{ViewBag.selectedBill}")</td>
                         </tr>
                         
                         

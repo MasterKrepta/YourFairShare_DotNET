@@ -4,49 +4,58 @@
     ViewBag.Title = "ViewBills";
 }
 
-<div class="container row">
-    <div class="col-md-9">
-        <h2 class="text-info">View Bills</h2>
+<div class="container ">
+    <div class="row">
+        <div class="col-md-9">
+            <h2 class="text-info">View Bills</h2>
+        </div>
+
+        <div class="col-md-3 p-2 ">
+            @Html.ActionLink("Create", "AddBill", null, new { @class = "btn btn-info" })
+        </div>
     </div>
 
-    <div class="col-md-3 ">
-        @Html.ActionLink("Create", "AddBill", null, new { @class = "btn btn-info" })
-    </div>
 
 </div>
-<table class="table">
-    <thead>
-        <tr  class="bg-primary">
-            
-            <th>
-                @Html.DisplayNameFor(model => model.BillName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DueDate)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BillName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DueDate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-success" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr class="bg-primary">
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.BillName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DueDate)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BillName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DueDate)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

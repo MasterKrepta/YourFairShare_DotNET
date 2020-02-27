@@ -3,56 +3,61 @@
 @{
     ViewBag.Title = "ViewHousehold";
 }
-    <div class="container row" >
-            <div class="col-md-9">
-                <h2 class="text-info">View Roommates</h2>
-            </div>
-        
-            <div class="col-md-3 ">
-                @Html.ActionLink("Add Roommate", "Join", null, new { @class = "btn btn-info" })
-        
-            </div>
-        
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <h2 class="text-info">View Roommates</h2>
+        </div>
+
+        <div class="col-md-3 p-2">
+            @Html.ActionLink("Add Roommate", "Join", null, new { @class = "btn btn-info" })
+
+        </div>
     </div>
-    
+</div>
 
 
-    <table class="table table-bordered">
-        <thead>
+<div class="container">
+    <div class="row">
+        @*sort payments by month *@
+        <table class="table table-bordered">
+            <thead>
 
-            <tr class="bg-primary">
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LastName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MonthlyPayment)
-                </th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MonthlyPayment)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new {  roommateId=item.RoommateId  }, new { @class = "btn btn-success" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.RoommateId }, new { @class = "btn btn-danger" })
-                    </td>
+                <tr class="bg-primary">
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MonthlyPayment)
+                    </th>
                 </tr>
-            }
-        </tbody>
+            </thead>
 
-    </table>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MonthlyPayment)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { roommateId = item.RoommateId }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.RoommateId }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
