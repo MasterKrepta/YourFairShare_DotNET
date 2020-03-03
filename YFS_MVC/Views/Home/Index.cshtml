@@ -6,9 +6,12 @@
 }
 
 <div class="jumbotron">
-    <h1>YourFairShare</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div class="transparent ">
+        <h1>Your Fair Share</h1>
+        <p class="lead">Balanced bill sharing, that keeps everyone in the house honest and informed.</p>
+        <p><a href="#" class="btn btn-dark btn-lg">Learn more &raquo;</a></p>
+    </div>
+    
 </div>
 
 <div class="row">
@@ -18,12 +21,22 @@
         @Html.Partial("_ListRoommates", Model.Roommates)
         
     </div>
-    <div class="col-md-7">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+    <div class="col-md-7 bg-light">
+        <h2>Main Program </h2>
+        <blockquote class="blockquote">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse turpis leo, pulvinar vel commodo in.</p>
+            <footer class="blockquote-footer">Someone Wise</footer>
+        </blockquote>
+        
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras neque nisl, tempor euismod est et, lacinia tempus sapien. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus iaculis velit ut mauris iaculis tristique. Fusce ut arcu tortor. Aenean pellentesque dapibus justo, quis sollicitudin est fermentum a. Fusce felis leo, euismod a convallis sed, dictum quis mi. Praesent lacinia tincidunt varius. Curabitur a interdum lorem, quis blandit tellus. Sed vitae nunc ipsum. Morbi eleifend ornare nibh, vitae malesuada augue faucibus sed. Etiam eu sem lacinia, venenatis augue eu, tincidunt ex. Fusce volutpat odio eu massa interdum, sit amet laoreet nisl feugiat. Nam auctor arcu sit amet eros volutpat dictum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum ligula nunc, viverra interdum felis a, ultricies iaculis mi.
+        </p>
+        <p>
+            Proin placerat feugiat rutrum. Praesent condimentum eget tellus a sollicitudin. Suspendisse ultricies ipsum vitae accumsan iaculis. Nunc id tristique ligula, quis facilisis justo. Mauris eget tempus nunc. Aliquam faucibus placerat ligula. Aenean aliquam velit vel vulputate varius. Maecenas euismod tempor fringilla. Fusce rutrum, arcu eu imperdiet congue, magna ipsum pretium nisi, vitae maximus purus felis sit amet mi. Cras maximus lorem vel placerat accumsan. Cras ullamcorper hendrerit ultrices. Duis ut massa in metus feugiat cursus.
+        </p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-2 bg-secondary p-2 m-2">
+    <div class="col-md-2 bg-success p-2 m-2">
         <h2>Bills</h2>
         @Html.Partial("_ListBills", Model.Bills)
     </div>

@@ -27,3 +27,11 @@ tbody>tr:nth-child(odd) {
     background-color: lightcyan;
 }
 
+.jumbotron {
+    background-image: url(ims/jumbotron.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.transparent {
+    background-color: rgba(91, 194, 50, 0.39);
+}
