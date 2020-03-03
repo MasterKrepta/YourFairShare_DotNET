@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create a New Bill";
+    //Model.Roommates = ViewBag.Roommates;
 }
 
 <h2>Create a New Bill</h2>
@@ -39,7 +40,25 @@
                 @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            <ul class="list-unstyled list-group list-group-horizontal">
+                @for (int i = 0; i < Model.Roommates.Count; i++)
+                {
 
+                    @Html.HiddenFor(r => r.Roommates[i].FirstName)
+                    @Html.CheckBox(Model.Roommates[i].FirstName, true) @Model.Roommates[i].FirstName
+                    //@Html.CheckBoxFor(r => true, r.Roommates[i])
+
+                    @*<li>
+                        <input type="checkbox" id="@roommate.FirstName" name="@roommate.FirstName" value="FullName" />
+                        <br />
+                        <label for="@roommate.FirstName" class="pr-4">@roommate.FirstName</label><br>
+                    </li>*@
+                }
+
+
+            </ul>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-success" />

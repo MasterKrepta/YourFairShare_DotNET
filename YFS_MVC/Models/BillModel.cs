@@ -20,5 +20,7 @@ namespace YFS_MVC.Models
 
         public bool IsCurrent { get; set; }
 
+        public List<RoommateModel> Roommates { get; set; } = new List<RoommateModel>();
+
     }
 }

@@ -13,5 +13,6 @@ namespace DataLibrary.Models
         public decimal AmountDue { get; set; }
         public DateTime DueDate { get; set; }
         public bool IsCurrent { get; set; }
+        public List<RoommateModel> Roommates { get; set; } = new List<RoommateModel>();
     }
 }

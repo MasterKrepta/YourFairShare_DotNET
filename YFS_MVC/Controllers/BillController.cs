@@ -36,8 +36,20 @@ namespace YFS_MVC.Controllers
         public ActionResult AddBill()
         {
             ViewBag.Message = "Add A New Bill";
+            var data = DataLibrary.BusinessLogic.RoommateProcessor.LoadRoommates();
+            var newBill = new BillModel();
+            foreach (var item in data)
+            {
+                newBill.Roommates.Add(new RoommateModel{
+                    RoommateId = item.RoommateId,
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    MonthlyPayment = item.MonthlyPayment
+                });
+            }
+            
 
-            return View();
+            return View(newBill);
         }
 
         [HttpPost]
@@ -50,6 +62,7 @@ namespace YFS_MVC.Controllers
                                 model.BillName,
                                 model.Amount,
                                 model.DueDate);
+                //TODO assign bills here based  on the checkboxes
                 return RedirectToAction("ViewBills");
             }
 
