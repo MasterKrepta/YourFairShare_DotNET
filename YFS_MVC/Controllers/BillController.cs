@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using YFS_MVC.Models;
 using static DataLibrary.BusinessLogic.BillProcessor;
-
+using static DataLibrary.BusinessLogic.AssignedBillProcessor;
 namespace YFS_MVC.Controllers
 {
     public class BillController : Controller
@@ -54,14 +51,21 @@ namespace YFS_MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddBill(BillModel model)
+        public ActionResult AddBill(BillModel bill, List<int> assignedRoommates)
         {
+            
             if (ModelState.IsValid)
             {
                 int recordsCreated = CreateBill(
-                                model.BillName,
-                                model.Amount,
-                                model.DueDate);
+                                bill.ID,
+                                bill.BillName,
+                                bill.Amount,
+                                bill.DueDate);
+                foreach (var roommateID in assignedRoommates)
+                {
+                    AssignBill(bill.ID, roommateID);
+                }
+                
                 //TODO assign bills here based  on the checkboxes
                 //todo currently assigned to every tennat
                 return RedirectToAction("ViewBills");

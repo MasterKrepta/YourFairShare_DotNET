@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\AssignedBillProcessor.cs" />
     <Compile Include="BusinessLogic\BillProcessor.cs" />
     <Compile Include="BusinessLogic\PaymentProcessor.cs" />
     <Compile Include="Models\BillModel.cs" />

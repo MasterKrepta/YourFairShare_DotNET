@@ -45,8 +45,9 @@
                 @for (int i = 0; i < Model.Roommates.Count; i++)
                 {
 
-                    @Html.HiddenFor(r => r.Roommates[i].FirstName)
-                    @Html.CheckBox(Model.Roommates[i].FirstName, true) @Model.Roommates[i].FirstName
+                    @Html.HiddenFor(r => r.Roommates[i].RoommateId)
+                    @Html.CheckBox(Model.Roommates[i].FirstName, true) 
+                    @Model.Roommates[i].FirstName
                     //@Html.CheckBoxFor(r => r.Roommates.)
 
                     @*<li>

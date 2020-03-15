@@ -10,10 +10,11 @@ namespace DataLibrary.BusinessLogic
 {
     public static class BillProcessor
     {
-        public static int CreateBill(string billName, decimal amount, DateTime duedate)
+        public static int CreateBill(int id, string billName, decimal amount, DateTime duedate)
         {
             BillModel data = new BillModel
             {
+                ID = id,
                 BillName = billName,
                 AmountDue = amount,
                 DueDate = duedate,
@@ -22,6 +23,7 @@ namespace DataLibrary.BusinessLogic
             
             string sql = $"sp_AddNewBill '{data.BillName}', '{data.AmountDue}', '{data.DueDate}'";
             UpdatePayments(data.AmountDue);
+            //TODO impliment this AssignedBillProcessor.AssignBill(data, roommate);
             return SqlDataAccess.SaveData(sql, data);
         }
 
