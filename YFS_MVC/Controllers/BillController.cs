@@ -35,14 +35,16 @@ namespace YFS_MVC.Controllers
             ViewBag.Message = "Add A New Bill";
             var data = DataLibrary.BusinessLogic.RoommateProcessor.LoadRoommates();
             var newBill = new BillModel();
+            //TODO this might change
             foreach (var item in data)
             {
                 newBill.Roommates.Add(new RoommateModel{
                     RoommateId = item.RoommateId,
                     FirstName = item.FirstName,
                     LastName = item.LastName,
-                    MonthlyPayment = item.MonthlyPayment
-                });
+                    MonthlyPayment = item.MonthlyPayment,
+                    IsSelected = false
+                });;
             }
             
 
@@ -51,19 +53,21 @@ namespace YFS_MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddBill(BillModel bill, List<int> assignedRoommates)
+        public ActionResult AddBill(BillModel bill)
         {
             
             if (ModelState.IsValid)
             {
                 int recordsCreated = CreateBill(
-                                bill.ID,
                                 bill.BillName,
                                 bill.Amount,
                                 bill.DueDate);
-                foreach (var roommateID in assignedRoommates)
+                foreach (var r in bill.Roommates)
                 {
-                    AssignBill(bill.ID, roommateID);
+                    if (r.IsSelected)
+                    {
+                        AssignBill(bill.ID, r.RoommateId);
+                    }
                 }
                 
                 //TODO assign bills here based  on the checkboxes

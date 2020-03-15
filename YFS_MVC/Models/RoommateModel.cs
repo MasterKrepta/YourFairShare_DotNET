@@ -27,5 +27,6 @@ namespace YFS_MVC.Models
             }
         }
         public decimal MonthlyPayment { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

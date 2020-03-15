@@ -10,11 +10,10 @@ namespace DataLibrary.BusinessLogic
 {
     public static class BillProcessor
     {
-        public static int CreateBill(int id, string billName, decimal amount, DateTime duedate)
+        public static int CreateBill(string billName, decimal amount, DateTime duedate)
         {
             BillModel data = new BillModel
             {
-                ID = id,
                 BillName = billName,
                 AmountDue = amount,
                 DueDate = duedate,
