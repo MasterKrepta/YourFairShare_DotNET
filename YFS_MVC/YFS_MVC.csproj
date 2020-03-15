@@ -128,6 +128,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AssignedBillViewModel.cs" />
     <Compile Include="Models\BillModel.cs" />
     <Compile Include="Models\PaymentModel.cs" />
     <Compile Include="Models\RoommateModel.cs" />
@@ -286,13 +287,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Payment\ListPayments.cshtml" />
+    <Content Include="Views\Shared\_ListPaymentsDue.cshtml" />
     <Content Include="Views\Payment\AddPayment.cshtml" />
     <Content Include="Views\Home\Index - Copy.cshtml" />
     <Content Include="Views\Shared\_ListRoommates.cshtml" />
     <Content Include="Views\Shared\_ListBills.cshtml" />
-    <Content Include="Views\Payment\WhoPaidWhat.cshtml" />
     <Content Include="Views\Payment\Details.cshtml" />
+    <Content Include="Views\Payment\ListPayments.cshtml" />
+    <Content Include="Views\Shared\_ListPaidBills.cshtml" />
+    <Content Include="Views\Payment\ListPaidBills.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

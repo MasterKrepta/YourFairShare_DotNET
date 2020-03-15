@@ -63,6 +63,7 @@ namespace YFS_MVC.Controllers
                                 model.Amount,
                                 model.DueDate);
                 //TODO assign bills here based  on the checkboxes
+                //todo currently assigned to every tennat
                 return RedirectToAction("ViewBills");
             }
 

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<YFS_MVC.ViewModels.AssignedBillViewModel>
+
+@{
+    ViewBag.Title = "ListPaidBills";
+}
+
+<div class="container">
+    <div class="row">
+        <h3>Bills Due</h3>
+        @Html.Partial("_ListPaidBills")
+    </div>
+</div>
+</table>

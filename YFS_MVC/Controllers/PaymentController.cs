@@ -17,25 +17,32 @@ namespace YFS_MVC.Controllers
 		{
 			return View();
 		}
-
-
-		
+	
 		public ActionResult ListPayments()
 		{
 
-			var data = PaymentProcessor.LoadPayments();
-			List<PaymentViewModel> payments = new List<PaymentViewModel>();
+			var data = PaymentProcessor.GetUnpaidBills();
+			List<AssignedBillViewModel> assignedBills = new List<AssignedBillViewModel>();
 
 			foreach (var p in data)
 			{
-				payments.Add(new PaymentViewModel
+
+				assignedBills.Add(new AssignedBillViewModel
 				{
-					Payment = new PaymentModel(p.Id, p.BillId, p.RoommateId, p.AmountPaid, p.DatePaid)
+					BillName = p.BillName,
+					FirstName = p.FirstName,
+					LastName = p.LastName,
+					AmountDue = p.AmountDue,
+					DueDate = p.DueDate
+				});
+				//payments.Add(new PaymentViewModel
+				//{
+				//	Payment = new PaymentModel(p.Id, p.BillId, p.RoommateId, p.AmountPaid, p.DatePaid)
 				   
-				}); ; 
+				//}); ; 
 			   
 			}
-			return View(payments);
+			return View(assignedBills);
 		}
 
 		public ActionResult AddPayment(int? roommateId, int? billId)
@@ -109,21 +116,22 @@ namespace YFS_MVC.Controllers
 			return View(model);
 		}
 
-	   public ActionResult WhoPaidWhat()
+	   public ActionResult ListPaidBills()
 		{
-			List<PaymentViewModel> model = new List<PaymentViewModel>();
-			var paymentData = PaymentProcessor.GetBillsByWithPayers();
+			List<AssignedBillViewModel> model = new List<AssignedBillViewModel>();
+			var paymentData = PaymentProcessor.GetPaidBills();
 			foreach (var p in paymentData)
 			{
-				model.Add(new PaymentViewModel
+				model.Add(new AssignedBillViewModel
 				{
-					Payment = new PaymentModel(p.Id, p.BillId, p.RoommateId, p.AmountPaid, p.DatePaid)
-
-				}); ;
+					BillName = p.BillName,
+					FirstName = p.FirstName,
+					LastName = p.LastName,
+					AmountDue = p.AmountDue,
+					DueDate = p.DueDate
+				});
 			}
 		
-			
-	
 			return View(model);
 		}
 	}

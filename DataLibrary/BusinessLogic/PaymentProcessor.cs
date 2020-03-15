@@ -11,13 +11,23 @@ namespace DataLibrary.BusinessLogic
 {
     public static class PaymentProcessor
     {
-        public static List<PaymentModel> LoadPayments()
+        public static List<AssignedBillViewModel> GetUnpaidBills()
+        {
+            string sql = "sp_GetUnpaidBills";
+
+            var data = SqlDataAccess.LoadData<AssignedBillViewModel>(sql);
+            return data;
+        }
+
+        public static List<AssignedBillViewModel> GetPaidBills()
         {
             string sql = "sp_GetAllPayments";
 
-            var data = SqlDataAccess.LoadData<PaymentModel>(sql);
+            var data = SqlDataAccess.LoadData<AssignedBillViewModel>(sql);
             return data;
         }
+
+
 
         public static int CreatePayment(int billId, int roommateId, decimal amountPaid)
         {
