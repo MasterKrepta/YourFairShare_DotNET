@@ -88,13 +88,13 @@
     <Build Include="dbo\StoredProcedures\Payment\sp_AddPayment.sql" />
     <Build Include="dbo\StoredProcedures\Bills\sp_GetBillById.sql" />
     <Build Include="dbo\StoredProcedures\Payment\sp_ApplyPayment.sql" />
-    <Build Include="dbo\StoredProcedures\Payment\spMarkPaid.sql" />
     <Build Include="dbo\StoredProcedures\Payment\sp_GetUnpaidBills.sql" />
     <Build Include="dbo\StoredProcedures\Payment\sp_GetPaymentById.sql" />
     <Build Include="dbo\StoredProcedures\Payment\sp_GetAllCurrentBills.sql" />
     <Build Include="dbo\StoredProcedures\Payment\sp_GetPaidBills.sql" />
     <Build Include="dbo\Tables\AssignedBill.sql" />
     <Build Include="dbo\StoredProcedures\Bills\sp_AssignBillToRoommate.sql" />
+    <Build Include="dbo\StoredProcedures\Bills\sp_MarkPaid.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />

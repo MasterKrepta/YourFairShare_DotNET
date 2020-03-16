@@ -7,6 +7,7 @@ namespace YFS_MVC.Controllers
 {
     public class BillController : Controller
     {
+        
         // GET: Bill
         public ActionResult Index()
         {
@@ -132,5 +133,7 @@ namespace YFS_MVC.Controllers
             return RedirectToAction("ViewBills");
 
         }
+
+        
     }
 }

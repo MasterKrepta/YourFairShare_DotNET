@@ -55,6 +55,7 @@
     <Compile Include="BusinessLogic\RoommateProcessor.cs" />
     <Compile Include="DataAccess\SqlDataAccess.cs" />
     <Compile Include="Models\RoommateModel.cs" />
+    <Compile Include="BusinessLogic\Utilities.cs" />
     <Compile Include="ViewModels\AssignedBillViewModel.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
   </ItemGroup>

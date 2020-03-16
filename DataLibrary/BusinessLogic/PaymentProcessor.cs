@@ -11,6 +11,7 @@ namespace DataLibrary.BusinessLogic
 {
     public static class PaymentProcessor
     {
+
         public static List<AssignedBillViewModel> GetUnpaidBills()
         {
             string sql = "sp_GetUnpaidBills";
@@ -44,6 +45,7 @@ namespace DataLibrary.BusinessLogic
             SqlDataAccess.SaveData(sql, data);
             decimal newAmount = bills.AmountDue - amountPaid;
             ApplyPayment(newAmount, billId);
+            Utilities.OnBillPaid(billId);
             return 0;
 
         }

@@ -48,8 +48,7 @@
                             @Html.DisplayFor(modelItem => item.DueDate)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-success" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("MAKE PAYMENT", "AddPayment", "Payment", null, new { @class = "btn btn-info p-3" })
                         </td>
                     </tr>
                 }

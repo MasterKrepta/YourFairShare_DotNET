@@ -293,7 +293,7 @@
     <Content Include="Views\Shared\_ListRoommates.cshtml" />
     <Content Include="Views\Shared\_ListBills.cshtml" />
     <Content Include="Views\Payment\Details.cshtml" />
-    <Content Include="Views\Payment\ListPayments.cshtml" />
+    <Content Include="Views\Payment\ListUnpaidBills.cshtml" />
     <Content Include="Views\Shared\_ListPaidBills.cshtml" />
     <Content Include="Views\Payment\ListPaidBills.cshtml" />
   </ItemGroup>

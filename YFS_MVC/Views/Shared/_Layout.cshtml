@@ -43,7 +43,7 @@
                         Payments
                     </a>
                     <div class="dropdown-menu" aria-labelledby="paymentDropdown">
-                        @Html.ActionLink("View Unpaid", "ListPayments", "Payment", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("View Unpaid", "ListUnpaidBills", "Payment", null, new { @class = "dropdown-item" })
                         @Html.ActionLink("Make Payment", "AddPayment", "Payment", null, new { @class = "dropdown-item" })
                         @Html.ActionLink("View Paid", "ListPaidBills", "Payment", null, new { @class = "dropdown-item" })
                     </div>

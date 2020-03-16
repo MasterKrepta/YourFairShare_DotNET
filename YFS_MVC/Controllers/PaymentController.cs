@@ -1,24 +1,26 @@
 ﻿using DataLibrary.BusinessLogic;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using YFS_MVC.ViewModels;
-using DataLibrary.BusinessLogic;
 using YFS_MVC.Models;
+using System;
 
 namespace YFS_MVC.Controllers
 {
+	
+
 	public class PaymentController : Controller
 	{
+
+		
+
 		// GET: Payment
 		public ActionResult Index()
 		{
 			return View();
 		}
 	
-		public ActionResult ListPayments()
+		public ActionResult ListUnpaidBills()
 		{
 
 			var data = PaymentProcessor.GetUnpaidBills();
@@ -35,14 +37,28 @@ namespace YFS_MVC.Controllers
 					AmountDue = p.AmountDue,
 					DueDate = p.DueDate
 				});
-				//payments.Add(new PaymentViewModel
-				//{
-				//	Payment = new PaymentModel(p.Id, p.BillId, p.RoommateId, p.AmountPaid, p.DatePaid)
-				   
-				//}); ; 
 			   
 			}
 			return View(assignedBills);
+		}
+
+		public ActionResult ListPaidBills()
+		{
+			List<AssignedBillViewModel> model = new List<AssignedBillViewModel>();
+			var paymentData = PaymentProcessor.GetPaidBills();
+			foreach (var p in paymentData)
+			{
+				model.Add(new AssignedBillViewModel
+				{
+					BillName = p.BillName,
+					FirstName = p.FirstName,
+					LastName = p.LastName,
+					AmountDue = p.AmountDue,
+					DueDate = p.DueDate
+				});
+			}
+
+			return View(model);
 		}
 
 		public ActionResult AddPayment(int? roommateId, int? billId)
@@ -94,7 +110,7 @@ namespace YFS_MVC.Controllers
 
 				return RedirectToAction("Index");
 			}
-
+			
 			return View();
 		}
 
@@ -116,23 +132,6 @@ namespace YFS_MVC.Controllers
 			return View(model);
 		}
 
-	   public ActionResult ListPaidBills()
-		{
-			List<AssignedBillViewModel> model = new List<AssignedBillViewModel>();
-			var paymentData = PaymentProcessor.GetPaidBills();
-			foreach (var p in paymentData)
-			{
-				model.Add(new AssignedBillViewModel
-				{
-					BillName = p.BillName,
-					FirstName = p.FirstName,
-					LastName = p.LastName,
-					AmountDue = p.AmountDue,
-					DueDate = p.DueDate
-				});
-			}
-		
-			return View(model);
-		}
+	   
 	}
 }

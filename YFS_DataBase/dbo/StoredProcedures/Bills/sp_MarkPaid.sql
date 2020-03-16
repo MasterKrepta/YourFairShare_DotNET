@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[spMarkPaid]
+﻿CREATE PROCEDURE [dbo].[sp_MarkPaid]
 	@billId int
 AS
 begin

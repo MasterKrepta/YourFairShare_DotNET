@@ -10,6 +10,14 @@ namespace DataLibrary.BusinessLogic
 {
     public static class BillProcessor
     {
+        public static Action<int> OnBillPaid = (int id) => { };
+
+        static BillProcessor()
+        {
+            OnBillPaid += CheckForPaidInFull;
+        }
+
+
         public static int CreateBill(string billName, decimal amount, DateTime duedate)
         {
             BillModel data = new BillModel
@@ -45,6 +53,7 @@ namespace DataLibrary.BusinessLogic
             newPayments /= numRoommates;
             string sql = $"sp_UpdatePayment '{newPayments}'";
             SqlDataAccess.SaveData(sql, newPayments);
+            
         }
 
 
@@ -86,6 +95,30 @@ namespace DataLibrary.BusinessLogic
             string sql = $"sp_UpdateBill '{name}', '{amount}', '{dueDate}'";
             SqlDataAccess.SaveData<BillModel>(sql, data);
             UpdatePayments();
+            
+        }
+
+        public static void CheckForPaidInFull(int id)
+        {
+            var data = GetBillById(id);
+            
+            BillModel model = new BillModel
+            {
+                ID = data.ID,
+                BillName = data.BillName,
+                AmountDue = data.AmountDue,
+                DueDate = data.DueDate
+            };
+            if (data.AmountDue <= 0)
+            {
+                MarkBillPaidInFull(model);
+            }
+        }
+
+        private static void MarkBillPaidInFull(BillModel bill)
+        {
+            string sql = $"sp_MarkPaid  '{bill.ID}'";
+            SqlDataAccess.SaveData<BillModel>(sql, bill);
         }
     }
 }
