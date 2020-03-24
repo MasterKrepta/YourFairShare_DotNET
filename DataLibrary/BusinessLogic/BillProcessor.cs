@@ -50,7 +50,7 @@ namespace DataLibrary.BusinessLogic
             {
                 newPayments += item.AmountDue;
             }
-            newPayments /= numRoommates;
+            newPayments /= numRoommates; //TODO this may need to go now too
             string sql = $"sp_UpdatePayment '{newPayments}'";
             SqlDataAccess.SaveData(sql, newPayments);
             
@@ -98,28 +98,5 @@ namespace DataLibrary.BusinessLogic
             
         }
 
-        public static void CheckForPaidInFull(int id)
-        {
-            //TODO this is not being called. need to refactor this out
-            var data = GetBillById(id);
-            
-            BillModel model = new BillModel
-            {
-                ID = data.ID,
-                BillName = data.BillName,
-                AmountDue = data.AmountDue,
-                DueDate = data.DueDate
-            };
-            if (data.AmountDue <= 0)
-            {
-                MarkBillPaidInFull(model);
-            }
-        }
-
-        private static void MarkBillPaidInFull(BillModel bill)
-        {
-            string sql = $"sp_MarkPaid  '{bill.ID}'";
-            SqlDataAccess.SaveData<BillModel>(sql, bill);
-        }
     }
 }
