@@ -296,6 +296,7 @@
     <Content Include="Views\Payment\ListUnpaidBills.cshtml" />
     <Content Include="Views\Shared\_ListPaidBills.cshtml" />
     <Content Include="Views\Payment\ListPaidBills.cshtml" />
+    <Content Include="Views\Bill\ViewBillsWithAssigned.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

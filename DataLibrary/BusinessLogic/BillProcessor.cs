@@ -1,5 +1,6 @@
 ﻿using DataLibrary.DataAccess;
 using DataLibrary.Models;
+using DataLibrary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,7 @@ namespace DataLibrary.BusinessLogic
     {
         public static Action<int> OnBillPaid = (int id) => { };
 
-        static BillProcessor()
-        {
-            OnBillPaid += CheckForPaidInFull;
-        }
+
 
 
         public static int CreateBill(string billName, decimal amount, DateTime duedate)
@@ -40,6 +38,16 @@ namespace DataLibrary.BusinessLogic
             
             return SqlDataAccess.LoadData<BillModel>(sql);
         }
+
+
+        public static List<AssignedBillViewModel> LoadBillsByAssigned()
+        {
+            string sql = "sp_GetRoommatesAssignedToBill";
+
+            return SqlDataAccess.LoadData<AssignedBillViewModel>(sql);
+        }
+
+
 
         public static void UpdatePayments(decimal newBill = 0)
         {
@@ -100,3 +108,4 @@ namespace DataLibrary.BusinessLogic
 
     }
 }
+

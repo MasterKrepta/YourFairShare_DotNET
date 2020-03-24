@@ -95,6 +95,7 @@
     <Build Include="dbo\Tables\AssignedBill.sql" />
     <Build Include="dbo\StoredProcedures\Bills\sp_AssignBillToRoommate.sql" />
     <Build Include="dbo\StoredProcedures\Bills\sp_MarkPaid.sql" />
+    <Build Include="dbo\sp_GetRoommatesAssignedToBill.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />

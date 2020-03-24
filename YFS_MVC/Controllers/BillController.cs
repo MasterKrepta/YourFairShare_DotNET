@@ -52,6 +52,27 @@ namespace YFS_MVC.Controllers
             return View(newBill);
         }
 
+
+        public ActionResult ViewBillsWithAssigned()
+        {
+            var billData = LoadBills();
+            var assignedRoommates = LoadBillsByAssigned();
+            List<BillModel> bills = new List<BillModel>();
+            foreach (var item in billData)
+            {
+                bills.Add(new BillModel
+                {
+                    ID = item.ID,
+                    BillName = item.BillName,
+                    Amount = item.AmountDue,
+                    DueDate = item.DueDate,
+                    IsCurrent = item.IsCurrent
+                    
+                }); ;
+            }
+            ViewBag.assignedRoommates = assignedRoommates;
+            return View(bills);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddBill(BillModel bill)
