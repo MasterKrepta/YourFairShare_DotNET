@@ -100,6 +100,7 @@ namespace DataLibrary.BusinessLogic
 
         public static void CheckForPaidInFull(int id)
         {
+            //TODO this is not being called. need to refactor this out
             var data = GetBillById(id);
             
             BillModel model = new BillModel

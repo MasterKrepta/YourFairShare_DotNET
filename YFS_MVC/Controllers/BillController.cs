@@ -70,9 +70,7 @@ namespace YFS_MVC.Controllers
                         AssignBill(bill.ID, r.RoommateId);
                     }
                 }
-                
-                //TODO assign bills here based  on the checkboxes
-                //todo currently assigned to every tennat
+
                 return RedirectToAction("ViewBills");
             }
 

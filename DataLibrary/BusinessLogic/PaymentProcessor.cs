@@ -67,8 +67,16 @@ namespace DataLibrary.BusinessLogic
 
             if (bill.AmountDue <= 0)
             {
-                var data = new BillModel();
-                string sql = $"spMarkPaid, {billId}";
+                var data = new BillModel{
+                    ID = billId,
+                    BillName = bill.BillName,
+                    AmountDue = bill.AmountDue,
+                    DueDate = bill.DueDate,
+                    IsCurrent = bill.IsCurrent,
+                    Roommates = bill.Roommates
+                };
+
+                string sql = $"spMarkPaid {billId}";
                 SqlDataAccess.SaveData(sql, data);
             }
         }
