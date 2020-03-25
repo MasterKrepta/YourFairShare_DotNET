@@ -1,64 +1,60 @@
-﻿@model IEnumerable<YFS_MVC.Models.BillModel>
+﻿@model IEnumerable<YFS_MVC.ViewModels.BillWithAssignedViewModel>
 
 @{
-    ViewBag.Title = "ViewBillsWithAssigned";
-    
+    ViewBag.Title = "ViewbillsWithAssigned";
 }
 
-<h2>ViewBillsWithAssigned</h2>
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-10">
+                <h2 class="text-info ">View Bills With Assigned</h2>
+            </div>
+        </div>
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BillName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Amount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DueDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsCurrent)
-        </th>
-        <th></th>
-    </tr>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <table class="table">
+                    <thead>
+                        <tr class="bg-primary">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Bill.BillName)
+                                
+                            </th>
+                            <th>@Html.DisplayNameFor(model => model.Bill.Amount)</th>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BillName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DueDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsCurrent)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                <div class="container">
+                                    @foreach (var r in item.Roommates)
+                                    {
+                                        <a class="dropdown-item" href="#">@Html.DisplayFor(modelItem => r.FullName)</a>
+                                        <a class="dropdown-item" href="#">@Html.DisplayFor(modelItem => r.MonthlyPayment)</a>/*This is the wrong number*/
+                                @*<div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @Html.DisplayFor(modelItem => item.Bill.BillName)
+                                    </button>
 
-    @foreach (var item in ViewBag.assignedRoommates)
-    {
-        <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.BillName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>*@
-        </tr>
-    }
-</table>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                    </div>
+                                </div>*@  
+                                    }
+
+                                </div>
+                                
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.Bill.Amount)</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[sp_GetRoommatesAssignedToBill]
 
 AS
-	select b.BillName, r.RoommateId, r.FirstName, r.LastName 
+	select b.Id, b.BillName, b.AmountDue, r.RoommateId, r.FirstName, r.LastName 
 	from Roommates As r
 	join AssignedBill AS a ON a.roommate = r.RoommateId
 	join Bills AS b On b.id = a.bill

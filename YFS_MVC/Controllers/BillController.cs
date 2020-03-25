@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using YFS_MVC.Models;
+using YFS_MVC.ViewModels;
 using static DataLibrary.BusinessLogic.BillProcessor;
 using static DataLibrary.BusinessLogic.AssignedBillProcessor;
+
 namespace YFS_MVC.Controllers
 {
     public class BillController : Controller
@@ -58,6 +60,7 @@ namespace YFS_MVC.Controllers
             var billData = LoadBills();
             var assignedRoommates = LoadBillsByAssigned();
             List<BillModel> bills = new List<BillModel>();
+            
             foreach (var item in billData)
             {
                 bills.Add(new BillModel
@@ -70,9 +73,44 @@ namespace YFS_MVC.Controllers
                     
                 }); ;
             }
-            ViewBag.assignedRoommates = assignedRoommates;
-            return View(bills);
+
+            
+            var final = new List<BillWithAssignedViewModel>();
+            
+            foreach (var b in bills)
+            {
+                
+                var temp = new List<RoommateModel>();
+                foreach (var r in assignedRoommates)
+                {
+                    if (r.BillName == b.BillName) //TODO this is kinda strange, refactor it to be done with SQL. 
+                    {
+                        temp.Add(new RoommateModel
+                        {
+                            FirstName = r.FirstName,
+                            LastName = r.LastName,
+                            
+                            
+                        });
+                        foreach (var payment in temp)
+                        {
+                            payment.MonthlyPayment = b.Amount / temp.Count; //TODO think about where to track the payment due
+                        }
+                    }
+                
+                }
+
+                final.Add(new BillWithAssignedViewModel
+                {
+                    Bill = b,
+                    Roommates = temp
+                }); ;
+            }
+
+            return View(final);
+            //return View(bills);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddBill(BillModel bill)
