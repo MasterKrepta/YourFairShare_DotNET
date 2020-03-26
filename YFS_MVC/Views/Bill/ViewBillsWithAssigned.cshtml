@@ -2,59 +2,49 @@
 
 @{
     ViewBag.Title = "ViewbillsWithAssigned";
+    ViewBag.NumberOfBills = 1;
 }
 
-    <div class="container ">
-        <div class="row">
-            <div class="col-lg-10">
-                <h2 class="text-info ">View Bills With Assigned</h2>
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-10">
+            <h2 class="text-info ">View Bills With Assigned</h2>
+        </div>
+    </div>
+</div>
+    
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10">
+            <div id="accordion">
+                @foreach (var item in Model)
+                {
+
+
+                    <div class="card">
+                        <div class="card-header" id="@(item.Bill.BillName + "headingOne")">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#@(item.Bill.BillName + "collapseOne")" aria-expanded="false" aria-controls="@(item.Bill.BillName + "collapseOne")">
+                                    @Html.DisplayFor(model => item.Bill.BillName)
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="@(item.Bill.BillName + "collapseOne")" class="collapse" aria-labelledby="@(item.Bill.BillName + "headingOne")" data-parent="#accordion">
+                            <div class="card-body">
+                                @foreach (var r in item.Roommates)
+                                {
+
+                                    <a class="dropdown-item" href="#">@Html.DisplayFor(modelItem => r.FullName)</a>
+                                    <a class="dropdown-item" href="#">@Html.DisplayFor(modelItem => r.MonthlyPayment)</a>/*This is the wrong number*/
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                    
             </div>
         </div>
     </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10">
-                <table class="table">
-                    <thead>
-                        <tr class="bg-primary">
-                            <th>
-                                @Html.DisplayNameFor(model => model.Bill.BillName)
-                                
-                            </th>
-                            <th>@Html.DisplayNameFor(model => model.Bill.Amount)</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                        <tr>
-                            <td>
-                                <div class="container">
-                                    @foreach (var r in item.Roommates)
-                                    {
-                                        <a class="dropdown-item" href="#">@Html.DisplayFor(modelItem => r.FullName)</a>
-                                        <a class="dropdown-item" href="#">@Html.DisplayFor(modelItem => r.MonthlyPayment)</a>/*This is the wrong number*/
-                                @*<div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        @Html.DisplayFor(modelItem => item.Bill.BillName)
-                                    </button>
-
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                                    </div>
-                                </div>*@  
-                                    }
-
-                                </div>
-                                
-                            </td>
-                            <td>@Html.DisplayFor(modelItem => item.Bill.Amount)</td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+</div>
