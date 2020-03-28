@@ -33,11 +33,22 @@
                         <div id="@(item.Bill.BillName + "collapseOne")" class="collapse" aria-labelledby="@(item.Bill.BillName + "headingOne")" data-parent="#accordion">
                             <div class="card-body">
                                 @foreach (var r in item.Roommates)
-                                {
-
-                                    <a class="dropdown-item" href="#">@Html.DisplayFor(modelItem => r.FullName)</a>
-                                    <a class="dropdown-item" href="#">@Html.DisplayFor(modelItem => r.MonthlyPayment)</a>/*This is the wrong number*/
-
+                                    {
+                                <div class="contrainer">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <a class="dropdown-item" href="#">@Html.DisplayFor(modelItem => r.FullName)</a>
+                                        </div>
+                                        <div class="col-3">
+                                            <a class="dropdown-item" href="#">@Html.DisplayFor(modelItem => r.MonthlyPayment)</a>
+                                        </div>
+                                        <div class="col-3">
+                                            @Html.ActionLink("MAKE PAYMENT", "AddPayment", "Payment", new {RoommateId = r.RoommateId, BillId = item.Bill.ID, amountOwed = r.MonthlyPayment}, new { @class = "btn btn-info p-3" })
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                    
                                 }
                             </div>
                         </div>

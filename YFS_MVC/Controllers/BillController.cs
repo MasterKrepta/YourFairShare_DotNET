@@ -87,6 +87,7 @@ namespace YFS_MVC.Controllers
                     {
                         temp.Add(new RoommateModel
                         {
+                            RoommateId = r.RoommateId,
                             FirstName = r.FirstName,
                             LastName = r.LastName,
                             

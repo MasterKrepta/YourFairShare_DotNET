@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using YFS_MVC.ViewModels;
 using YFS_MVC.Models;
 using System;
+using System.Globalization;
 
 namespace YFS_MVC.Controllers
 {
@@ -61,13 +62,16 @@ namespace YFS_MVC.Controllers
 			return View(model);
 		}
 
-		public ActionResult AddPayment(int? roommateId, int? billId)
+		public ActionResult AddPayment(int? roommateId, int? billId, decimal? amountOwed)
 		{
+			
+
 			if (roommateId != null && billId !=null)
 			{
 				
 				ViewBag.selectedRoommate = RoommateProcessor.GetRoommateById((int)roommateId).FullName; 
 				ViewBag.selectedBill = BillProcessor.GetBillById((int)billId).BillName;
+				ViewBag.AmountOwed = amountOwed?.ToString("C", CultureInfo.CurrentCulture);
 			}
 			HouseHoldViewModel model = new HouseHoldViewModel();
 			var billData = BillProcessor.LoadBills();
