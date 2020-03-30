@@ -64,37 +64,44 @@ namespace YFS_MVC.Controllers
 
 		public ActionResult AddPayment(int? roommateId, int? billId, decimal? amountOwed)
 		{
-			
 
+			HouseHoldViewModel model = new HouseHoldViewModel();
 			if (roommateId != null && billId !=null)
 			{
 				
 				ViewBag.selectedRoommate = RoommateProcessor.GetRoommateById((int)roommateId).FullName; 
 				ViewBag.selectedBill = BillProcessor.GetBillById((int)billId).BillName;
 				ViewBag.AmountOwed = amountOwed?.ToString("C", CultureInfo.CurrentCulture);
+				model.Payment.BillId = (int)billId;
+				model.Payment.RoommateId= RoommateProcessor.GetRoommateById((int)roommateId).RoommateId;
 			}
-			HouseHoldViewModel model = new HouseHoldViewModel();
-			var billData = BillProcessor.LoadBills();
-			var roommateData = RoommateProcessor.LoadRoommates();
-			foreach (var item in billData)
+			else
 			{
-				model.Bills.Add(new Models.BillModel { 
-					ID = item.ID,
-					BillName = item.BillName,
-					Amount = item.AmountDue,
-					DueDate = item.DueDate
-				});
-			}
-			foreach (var item in roommateData)
-			{
-				model.Roommates.Add(new Models.RoommateModel
+				var billData = BillProcessor.LoadBills();
+				var roommateData = RoommateProcessor.LoadRoommates();
+				foreach (var item in billData)
 				{
-					RoommateId = item.RoommateId,
-					FirstName = item.FirstName,
-					LastName = item.LastName,
-					MonthlyPayment = item.MonthlyPayment
-				});
+					model.Bills.Add(new Models.BillModel
+					{
+						ID = item.ID,
+						BillName = item.BillName,
+						Amount = item.AmountDue,
+						DueDate = item.DueDate
+					});
+				}
+				foreach (var item in roommateData)
+				{
+					model.Roommates.Add(new Models.RoommateModel
+					{
+						RoommateId = item.RoommateId,
+						FirstName = item.FirstName,
+						LastName = item.LastName,
+						MonthlyPayment = item.MonthlyPayment
+					});
+				}
 			}
+			
+			
 			return View(model);
 		}
 
@@ -109,7 +116,7 @@ namespace YFS_MVC.Controllers
 								model.Payment.RoommateId,
 								model.Payment.AmountPaid);
 
-				//todo get bill and roommate from 
+				//TODO check bill if its paid at this point
 
 
 				return RedirectToAction("Index");

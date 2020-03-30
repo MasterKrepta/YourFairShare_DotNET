@@ -11,6 +11,6 @@ namespace YFS_MVC.ViewModels
 
         public List<RoommateModel> Roommates { get; set; } = new List<RoommateModel>();
         public List<BillModel> Bills { get; set; } = new List<BillModel>();
-        public PaymentModel Payment { get; set; }
+        public PaymentModel Payment { get; set; } = new PaymentModel();
     }
 }

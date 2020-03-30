@@ -19,13 +19,13 @@
 
                 <div class="form-horizontal">
                     <hr />
-                    
-
                     <table>
                         <tr>
+                            @Html.HiddenFor(model => model.Payment.BillId)
+                            @Html.HiddenFor(model => model.Payment.RoommateId)
                             <td>@Html.DisplayNameFor(model => model.Payment.RoommateId)</td>
                             <td>@Html.DropDownListFor(model => model.Payment.RoommateId, new SelectList(Model.Roommates, "RoommateID", "FullName"), $"{ViewBag.selectedRoommate}")</td>
-                            
+
                         </tr>
                         <tr>
                             <td>@Html.DisplayNameFor(model => model.Payment.BillId)</td>
