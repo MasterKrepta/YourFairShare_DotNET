@@ -45,6 +45,7 @@
             <ul class="list-unstyled list-group list-group-horizontal">
                 @for (int i = 0; i < Model.Roommates.Count; i++)
                 {
+                    @Html.HiddenFor(r => r.Roommates[i].RoommateId)
                     @Html.CheckBoxFor(r => r.Roommates[i].IsSelected);
                     @Html.HiddenFor(r => r.Roommates[i].FirstName);
                     @Html.HiddenFor(r => r.Roommates[i].LastName);

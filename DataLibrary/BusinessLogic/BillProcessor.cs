@@ -28,7 +28,7 @@ namespace DataLibrary.BusinessLogic
             
             string sql = $"sp_AddNewBill '{data.BillName}', '{data.AmountDue}', '{data.DueDate}'";
             UpdatePayments(data.AmountDue);
-            //TODO impliment this AssignedBillProcessor.AssignBill(data, roommate);
+            //TODO (CAN I REMOVE THIS YET)impliment this AssignedBillProcessor.AssignBill(data, roommate);
             return SqlDataAccess.SaveData(sql, data);
         }
 

@@ -112,11 +112,12 @@ namespace YFS_MVC.Controllers
 			if (ModelState.IsValid)
 			{
 				PaymentProcessor.CreatePayment(
+					//!Bill is checked in this function
 								model.Payment.BillId,
 								model.Payment.RoommateId,
 								model.Payment.AmountPaid);
 
-				//TODO check bill if its paid at this point
+				//TODO SQL bug where amount due is being devided up per assigned each time
 
 
 				return RedirectToAction("Index");

@@ -4,6 +4,7 @@ using YFS_MVC.Models;
 using YFS_MVC.ViewModels;
 using static DataLibrary.BusinessLogic.BillProcessor;
 using static DataLibrary.BusinessLogic.AssignedBillProcessor;
+using DataLibrary.DataAccess;
 
 namespace YFS_MVC.Controllers
 {
@@ -95,7 +96,7 @@ namespace YFS_MVC.Controllers
                         });
                         foreach (var payment in temp)
                         {
-                            payment.MonthlyPayment = b.Amount / temp.Count; //TODO think about where to track the payment due
+                            payment.MonthlyPayment = b.Amount / temp.Count; //TODO (Here is the bug!)think about where to track the payment due
                         }
                     }
                 
@@ -123,6 +124,13 @@ namespace YFS_MVC.Controllers
                                 bill.BillName,
                                 bill.Amount,
                                 bill.DueDate);
+                
+                //TODO refactor this hacky code                
+                string sql = $"sp_GetBillByName '{bill.BillName}'";
+                var data = SqlDataAccess.LoadData<BillModel>(sql);
+                bill.ID = data[0].ID;
+
+
                 foreach (var r in bill.Roommates)
                 {
                     if (r.IsSelected)
