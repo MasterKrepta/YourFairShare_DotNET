@@ -22,15 +22,15 @@
 
 
                     <div class="card">
-                        <div class="card-header" id="@(item.Bill.BillName + "headingOne")">
+                        <div class="card-header" id="@(item.Bill.BillName + "_heading")">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#@(item.Bill.BillName + "collapseOne")" aria-expanded="false" aria-controls="@(item.Bill.BillName + "collapseOne")">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#@(item.Bill.BillName + "_collapse")" aria-expanded="false" aria-controls="@(item.Bill.BillName + "collapseOne")">
                                     @Html.DisplayFor(model => item.Bill.BillName)
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="@(item.Bill.BillName + "collapseOne")" class="collapse" aria-labelledby="@(item.Bill.BillName + "headingOne")" data-parent="#accordion">
+                        <div id="@(item.Bill.BillName + "_collapse")" class="collapse" aria-labelledby="@(item.Bill.BillName + "_heading")" data-parent="#accordion">
                             <div class="card-body">
                                 @foreach (var r in item.Roommates)
                                     {

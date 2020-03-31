@@ -28,8 +28,6 @@ namespace DataLibrary.BusinessLogic
             return data;
         }
 
-
-
         public static int CreatePayment(int billId, int roommateId, decimal amountPaid)
         {
             var bills = BillProcessor.GetBillById(billId);

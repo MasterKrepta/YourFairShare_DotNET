@@ -9,7 +9,8 @@ namespace YFS_MVC.Models
     public class BillModel
     {
         public int ID { get; set; }
-        
+
+        [RegularExpression(@"[^\s]+",ErrorMessage = "Spaces are not allowed")]
         public string BillName { get; set; }
 
         

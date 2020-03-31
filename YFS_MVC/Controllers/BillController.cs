@@ -50,7 +50,6 @@ namespace YFS_MVC.Controllers
                     IsSelected = false
                 });;
             }
-            
 
             return View(newBill);
         }
@@ -107,6 +106,12 @@ namespace YFS_MVC.Controllers
                     Bill = b,
                     Roommates = temp
                 }); ;
+
+                //TODO Hacky and needs fixed
+                foreach (var bill in final)
+                {
+                    bill.Bill.Roommates = bill.Roommates;
+                }
             }
 
             return View(final);
@@ -139,7 +144,7 @@ namespace YFS_MVC.Controllers
                     }
                 }
 
-                return RedirectToAction("ViewBills");
+                return RedirectToAction("ViewBillsWithAssigned");
             }
 
             return View();
@@ -168,7 +173,7 @@ namespace YFS_MVC.Controllers
             {
                 DeleteBill(model.ID);
                 UpdatePayments(model.Amount);
-                return RedirectToAction("ViewBills");
+                return RedirectToAction("ViewBillsWithAssigned");
             }
             return View();
         }
@@ -196,7 +201,7 @@ namespace YFS_MVC.Controllers
             {
                 UpdateBill(model.BillName, model.Amount, model.DueDate);
             }
-            return RedirectToAction("ViewBills");
+            return RedirectToAction("ViewBillsWithAssigned");
 
         }
 
