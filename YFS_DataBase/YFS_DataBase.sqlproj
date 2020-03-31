@@ -97,6 +97,7 @@
     <Build Include="dbo\StoredProcedures\Bills\sp_MarkPaid.sql" />
     <Build Include="dbo\sp_GetRoommatesAssignedToBill.sql" />
     <Build Include="dbo\StoredProcedures\Payment\sp_RemoveAssignedBill.sql" />
+    <Build Include="dbo\StoredProcedures\Payment\sp_ClearAssignedOnBillClosed.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />

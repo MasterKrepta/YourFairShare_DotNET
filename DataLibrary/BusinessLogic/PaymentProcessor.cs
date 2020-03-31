@@ -53,7 +53,6 @@ namespace DataLibrary.BusinessLogic
 
         private static void RemoveAssignedBill(int billId, int roommateId)
         {
-            //TODO debug this query is not running correctly
             string sql = $"sp_RemoveAssignedBill '{billId}', '{roommateId}'";
             SqlDataAccess.ExecuteQuery(sql);
         }
@@ -86,7 +85,14 @@ namespace DataLibrary.BusinessLogic
 
                 string sql = $"spMarkPaid {billId}";
                 SqlDataAccess.SaveData(sql, data);
+                ClearAssignedToPaidBill(billId);
             }
+        }
+
+        private static void ClearAssignedToPaidBill(int billId)
+        {
+            string sql = $"sp_ClearAssignedOnBillClosed {billId}";
+            SqlDataAccess.ExecuteQuery(sql);
         }
 
         public static List<PaymentModel> GetBillsByWithPayers()
