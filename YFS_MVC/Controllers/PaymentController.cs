@@ -78,11 +78,13 @@ namespace YFS_MVC.Controllers
 			else
 			{
 				var billData = BillProcessor.LoadBills();
+				//var billData = PaymentProcessor.GetUnpaidBills();
 				var roommateData = RoommateProcessor.LoadRoommates();
 				foreach (var item in billData)
 				{
 					model.Bills.Add(new Models.BillModel
 					{
+						//ID = item.BillId,
 						ID = item.ID,
 						BillName = item.BillName,
 						Amount = item.AmountDue,
@@ -118,7 +120,7 @@ namespace YFS_MVC.Controllers
 								model.Payment.AmountPaid);
 
 				//TODO SQL bug where amount due is being devided up per assigned each time
-
+				
 
 				return RedirectToAction("Index");
 			}

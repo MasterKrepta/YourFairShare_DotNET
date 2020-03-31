@@ -35,6 +35,13 @@ namespace DataLibrary.DataAccess
             }
         }
 
-     
+        public static int ExecuteQuery(string sql)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetCnnString()))
+            {
+                return cnn.Execute(sql);
+            }
+        }
+
     }
 }

@@ -45,9 +45,17 @@ namespace DataLibrary.BusinessLogic
             SqlDataAccess.SaveData(sql, data);
             decimal newAmount = bills.AmountDue - amountPaid;
             ApplyPayment(newAmount, billId);
+            RemoveAssignedBill(billId, roommateId);
             Utilities.OnBillPaid(billId);
             return 0;
 
+        }
+
+        private static void RemoveAssignedBill(int billId, int roommateId)
+        {
+            //TODO debug this query is not running correctly
+            string sql = $"sp_RemoveAssignedBill '{billId}', '{roommateId}'";
+            SqlDataAccess.ExecuteQuery(sql);
         }
 
         private static void ApplyPayment(decimal newAmount, int billId)
