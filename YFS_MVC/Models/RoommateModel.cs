@@ -26,6 +26,7 @@ namespace YFS_MVC.Models
                 return $"{FirstName} {LastName}";
             }
         }
+        [DataType(DataType.Currency)]
         public decimal MonthlyPayment { get; set; }
         public bool IsSelected { get; set; }
     }

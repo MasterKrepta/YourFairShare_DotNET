@@ -46,12 +46,15 @@
                 @for (int i = 0; i < Model.Roommates.Count; i++)
                 {
                     @Html.HiddenFor(r => r.Roommates[i].RoommateId)
-                    @Html.CheckBoxFor(r => r.Roommates[i].IsSelected);
+                <div class="userbox p-2">
+                    @Html.CheckBoxFor(r => r.Roommates[i].IsSelected)
+                    @Model.Roommates[i].FirstName
+                </div>
+                    
                     @Html.HiddenFor(r => r.Roommates[i].FirstName);
                     @Html.HiddenFor(r => r.Roommates[i].LastName);
-                    @Model.Roommates[i].FirstName;
-
-        
+                    
+                    
                 }
 
 

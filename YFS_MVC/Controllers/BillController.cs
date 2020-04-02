@@ -5,6 +5,7 @@ using YFS_MVC.ViewModels;
 using static DataLibrary.BusinessLogic.BillProcessor;
 using static DataLibrary.BusinessLogic.AssignedBillProcessor;
 using DataLibrary.DataAccess;
+using System;
 
 namespace YFS_MVC.Controllers
 {
@@ -50,7 +51,9 @@ namespace YFS_MVC.Controllers
                     IsSelected = false
                 });;
             }
-
+            var newDueDate = DateTime.Today;
+            newBill.DueDate = newDueDate.AddDays(30);
+            newBill.DueDate.ToShortDateString();
             return View(newBill);
         }
 

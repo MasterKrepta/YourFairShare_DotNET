@@ -33,5 +33,15 @@ tbody>tr:nth-child(odd) {
     background-size: cover;
 }
 .transparent {
-    background-color: rgba(91, 194, 50, 0.39);
+    background-color: rgba(92, 255, 17, 0.60);
+}
+
+.transparent, .lead {
+    color: rgba(22, 7, 124, 0.84);
+}
+.userbox {
+    margin: 5px;
+    padding: 3px;
+    background-color: aquamarine;
+    border: 1px solid black;
 }

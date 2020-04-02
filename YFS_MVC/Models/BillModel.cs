@@ -13,15 +13,13 @@ namespace YFS_MVC.Models
         [RegularExpression(@"[^\s]+",ErrorMessage = "Spaces are not allowed")]
         public string BillName { get; set; }
 
-        
         public decimal Amount { get; set; }
 
-        
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime DueDate { get; set; }
 
         public bool IsCurrent { get; set; }
 
         public List<RoommateModel> Roommates { get; set; } = new List<RoommateModel>();
-
     }
 }
